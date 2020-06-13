@@ -1,0 +1,2 @@
+# ImageHashes
+Hash colors
