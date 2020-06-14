@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
 //                System.out.println(field.getName());
                 Bitmap copyBitmap = Bitmap.createBitmap(bmp.getWidth(), bmp.getHeight(), bmp.getConfig());
                 /*crop white borders */
+
+                // the code is within ImageData.croppedBitmap
+                //has not itegrated in mainactiveity
                 CropMiddleFirstPixelTransformation ct = new CropMiddleFirstPixelTransformation();
                 Bitmap bitmap = ct.transform(bmp);
                 bitmaps.add(bmp);
