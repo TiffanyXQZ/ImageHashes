@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private List<ImageData_MinHash> imData_List = new ArrayList<>();
     private List<ImageBitmaps> imageBitmaps = new ArrayList<>();
     private List<Bitmap> bitmaps = new ArrayList<>();
+    private List<Bitmap> crop_bitmaps = new ArrayList<>();
+
     private List<Integer> imsID = new ArrayList<>();
 
     int index = 0;// image index to be compared
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 CropMiddleFirstPixelTransformation ct = new CropMiddleFirstPixelTransformation();
                 Bitmap bitmap = ct.transform(bmp);
                 bitmaps.add(bmp);
+                crop_bitmaps.add(bitmap);
 
                 imageBitmaps.add(new ImageBitmaps(field.getName(), bitmap));
                 ImageData_MinHash imdata = new ImageData_MinHash(field.getName(), bitmap, num, minhash);
@@ -118,9 +121,11 @@ public class MainActivity extends AppCompatActivity {
                 row = inflater.inflate(R.layout.row, parent, false);
             }
 
-            ImageView img = (ImageView) row.findViewById(R.id.imageView);
+            ImageView img = (ImageView) row.findViewById(R.id.image);
             ImageView imgCrop =  (ImageView) row.findViewById(R.id.imageCropped);
-//img.setImageResource(bitmaps.get(position));
+
+            img.setImageResource(bitmaps.get(position));
+            imgCrop.setImageBitmap(crop_bitmaps.get(position));
 //            img.setImageBitmap(bitmaps.get(position));
 //            imgCrop.setImageBitmap(bitmaps.get(0));
 
