@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.util.ArrayMap;
 
+import org.apache.commons.math3.stat.descriptive.moment.Variance;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -54,9 +56,12 @@ public class ImageData {
         bitmap = bmp;
         image_name = name;
         orig_pixels = readPixels(bitmap);
-        bin_idx = new int[orig_pixels.length];
         croppedPixelHash(0.5);
-//        calHist(num_default);
+    }
+    ImageData(Bitmap bmp) {
+        bitmap = bmp;
+        orig_pixels = readPixels(bitmap);
+        croppedPixelHash(0.5);
     }
 
     // Flatten bitmap to one dimensional
@@ -68,7 +73,7 @@ public class ImageData {
         int[][] imagePixels = new int[bitmap.getHeight()][bitmap.getWidth()];
         for (int i = 0; i < imagePixels.length; i++) {
             for (int j = 0; j < imagePixels[0].length; j++) {
-                imagePixels[i][j] = bitmap.getPixel(i, j);
+                imagePixels[i][j] = pixels[i*imagePixels[0].length+j];
             }
         }
         this.imagePixels = imagePixels;
@@ -92,7 +97,7 @@ public class ImageData {
                     + (int) Math.floor(green / w) * num
                     + (int) Math.floor(blue / w);
 
-            imageRGBHash[j / imagePixels.length][j % imagePixels[0].length] = pixels_Hash[j];
+            imageRGBHash[j / imagePixels[0].length][j % imagePixels[0].length] = pixels_Hash[j];
 
         }
 
@@ -101,7 +106,41 @@ public class ImageData {
     }
 
 
-    public void croppedPixelHash(double thresh) {
+    public void croppedPixelHash(double thresh){
+        int[][] red = new int[imagePixels.length][imagePixels[0].length];
+        for (int i = 0; i < imagePixels.length; i++) {
+            for (int j = 0; j < imagePixels[0].length; j++) {
+                red[i][j] = Color.red(imagePixels[i][j]) +
+                        Color.green(imagePixels[i][j]) +
+                        Color.blue(imagePixels[i][j]) / 3
+                ;
+            }
+        }
+//        red = new int[][]{
+//                {1,1,1},
+//                {2,2,2},
+//                {3,3,3},
+//        };
+
+
+        Stats variance = new Stats(red);
+        int low = 0, high = variance.getRowVariance().length-1;
+        while (low<variance.getRowVariance().length-20 && variance.getRowVariance()[low++]<1000.0);
+        while (high >low+10 && variance.getRowVariance()[high--]<1000.0);
+
+
+        croppedBitmap =  Bitmap.createBitmap(bitmap,
+                0,low,bitmap.getWidth(),high-low);
+
+/*        System.out.println(Arrays.toString(variance.getRowVariance()));
+        System.out.println(Arrays.toString(variance.getRowMean()));
+        System.out.println(Arrays.toString(variance.getColMean()));
+        System.out.println(Arrays.toString(variance.getColVariance()));*/
+    }
+
+
+
+    /*public void croppedPixelHash(double thresh) {
         if (imageRGBHash == null) setPixelsHash(num_color);
         int col_low = 0, col_high = imageRGBHash.length - 1, row_low = 0, row_high = imageRGBHash.length - 1;
         for (int i = 0; i < imageRGBHash.length; i++) {
@@ -173,7 +212,7 @@ public class ImageData {
                 break;
             }
         }
-        System.out.printf("rowlo%rowlow\trowlo%rowhigh\trowlo%collow\trowlo%colhigh\t",
+        System.out.printf("rowlo%drowlow\trowlo%drowhigh\trowlo%dcollow\trowlo%dcolhigh\t",
                 row_low,row_high,col_low,col_high);
         croppedImageRGBHash = new int[row_high-row_low+1][col_high-col_low+1];
         for (int i = row_low; i <= row_high; i++) {
@@ -191,7 +230,7 @@ public class ImageData {
             e.printStackTrace();
         }
     }
-
+*/
 
 //class ImageDist {
 //    private ImageData imgData;

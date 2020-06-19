@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
 
             try {
 
-
+                if(!field.getName().startsWith("a") &&
+                        !field.getName().startsWith("b")) continue;
 
 //                if (field.getName()!="a1") continue;
                 if (field.getName() == "abc_ab_share_pack_mtrl_alpha") continue;
@@ -62,19 +63,11 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap bmp = BitmapFactory.decodeResource(getResources(), field.getInt(null));
                 if (bmp == null) continue;
                 imsID.add( field.getInt(null));
-//                System.out.println(field.getName());
-                Bitmap copyBitmap = Bitmap.createBitmap(bmp.getWidth(), bmp.getHeight(), bmp.getConfig());
-                /*crop white borders */
-
-                // the code is within ImageData.croppedBitmap
-                //has not itegrated in mainactiveity
-                CropMiddleFirstPixelTransformation ct = new CropMiddleFirstPixelTransformation();
-                Bitmap bitmap = ct.transform(bmp);
+                ImageData imageData = new ImageData(bmp);
                 bitmaps.add(bmp);
-                crop_bitmaps.add(bitmap);
-
-                imageBitmaps.add(new ImageBitmaps(field.getName(), bitmap));
-                ImageData_MinHash imdata = new ImageData_MinHash(field.getName(), bitmap, num, minhash);
+                crop_bitmaps.add(imageData.getCroppedBitmap());
+                imageBitmaps.add(new ImageBitmaps(field.getName(), bmp));
+                ImageData_MinHash imdata = new ImageData_MinHash(field.getName(), bmp, num, minhash);
                 imData_List.add(imdata);
 
 
@@ -86,15 +79,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        for (int i = 0; i < imsID.size(); i++) {
-            System.out.println(imsID.get(i));
-        }
-
 
         String[] infos = imageInfo(imData_List);
-
-        System.out.println(infos.length);
-        System.out.println(imageBitmaps.size());
         adapt = new MyAdapter(this, imsID, infos);
         ListView listTask = (ListView) findViewById(R.id.listview);
         listTask.setAdapter(adapt);
@@ -132,28 +118,11 @@ public class MainActivity extends AppCompatActivity {
 //            imgCrop.setImageBitmap(bitmaps.get(0));
 
 
-//            img.setBackgroundColor(Color.parseColor("#000000"));
 
             TextView txv = row.findViewById(R.id.info);
 
             txv.setText(infos[position]);
 
-            System.out.println(infos[position]);
-
-
-//            txv.setText("Image " + Integer.toString(position)
-//                    + "\nNumber of pixels: " + imgs.get(position).getNum_pixel()
-//                    + "\nNumber of colors: " + imgs.get(position).getNum_color()
-//                    + "\nNumber of buckets: " + imgs.get(position).getNum()
-//
-//                    + "\nTime of rhb_hashing: " + imgs.get(position).getTime_rgbhashing()
-//                    + "\nTime of min_hashing: " + imgs.get(position).getTime_minhashing()
-//                    + "\nTop " + ImageData_MinHash.getN() + " colors are : " +
-//                    imgs.get(position).getTopNColor()
-//                    + "\n Range from " + Arrays.toString(ImageData_MinHash.getRange()) + " colors are : " +
-//                    imgs.get(position).getTopRangeColor()
-//
-//            );
 
 
             return row;
