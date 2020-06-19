@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.umb.cs.lsh.MyMinHash;
+import edu.umb.cs.lsh.WeightedJaccard;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Integer> imsID = new ArrayList<>();
 
     int index = 0;// image index to be compared
-    int num = 5;//num: number of buckets for RGB to integers.
+    int num = 10;//num: number of buckets for RGB to integers.
     int seed = 2020;
     long duration, startTime, endTime;
     MyMinHash minhash = new MyMinHash(0.2, num * num * num, seed);
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
 
-                if(!field.getName().startsWith("a") &&
+                if(!field.getName().startsWith("a00") &&
                         !field.getName().startsWith("b")) continue;
 
 //                if (field.getName()!="a1") continue;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        print();
 
 
         String[] infos = imageInfo(imData_List);
@@ -142,13 +144,39 @@ public class MainActivity extends AppCompatActivity {
 
                     + "\nTime of rhb_hashing: " + imHashes.get(i).getTime_rgbhashing()
                     + "\nTime of min_hashing: " + imHashes.get(i).getTime_minhashing()
-                    + "\nTop " + ImageData_MinHash.getN() + " colors are : " +
+
+   /*                 + "\nTop " + ImageData_MinHash.getN() + " colors are : " +
                     imHashes.get(i).getTopNColor()
                     + "\n Range from " + Arrays.toString(ImageData_MinHash.getRange()) + " colors are : " +
-                    imHashes.get(i).getTopRangeColor();
+                    imHashes.get(i).getTopRangeColor()
+            */
+            ;
         }
         return infos;
     }
+    private void print() {
+        //     Consider all colors
+//     Print minhash similarity between each image to a00001.jpg
+//     Print Real Jaccard similarity between each image to a00001.jpg
+//     Print Weighted Jaccard similarity between each image to a00001.jpg
+
+        for (ImageData_MinHash imageData : imData_List) {
+            System.out.println("-----------------\n");
+            System.out.printf("Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of " + imageData.getName()
+                    + " to a00001 are: " + minhash.similarity(imData_List.get(index).getMin_hash(),
+                    imageData.getMin_hash()) + " and " +
+                    minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash()) + " and " +
+                    WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()) + "\n");
+        }
+    }
+
+
+
+
+
+
+
+
 
 
 }
