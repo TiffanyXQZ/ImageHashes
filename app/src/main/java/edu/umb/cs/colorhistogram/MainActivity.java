@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 bitmaps.add(bmp);
                 crop_bitmaps.add(imageData.getCroppedBitmap());
                 imageBitmaps.add(new ImageBitmaps(field.getName(), bmp));
-                ImageData_MinHash imdata = new ImageData_MinHash(field.getName(), bmp, num, minhash);
+                ImageData_MinHash imdata = new ImageData_MinHash(field.getName(), imageData.getCroppedBitmap(), num, minhash);
                 imData_List.add(imdata);
 
 
@@ -156,9 +156,9 @@ public class MainActivity extends AppCompatActivity {
     }
     private void print() {
         //     Consider all colors
-//     Print minhash similarity between each image to a00001.jpg
-//     Print Real Jaccard similarity between each image to a00001.jpg
-//     Print Weighted Jaccard similarity between each image to a00001.jpg
+//     Print minhash similarity between each image to a00000.jpg
+//     Print Real Jaccard similarity between each image to a00000.jpg
+//     Print Weighted Jaccard similarity between each image to a00000.jpg
 
         for (ImageData_MinHash imageData : imData_List) {
             System.out.println("-----------------\n");

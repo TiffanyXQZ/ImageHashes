@@ -125,12 +125,17 @@ public class ImageData {
 
         Stats variance = new Stats(red);
         int low = 0, high = variance.getRowVariance().length-1;
-        while (low<variance.getRowVariance().length-20 && variance.getRowVariance()[low++]<1000.0);
-        while (high >low+10 && variance.getRowVariance()[high--]<1000.0);
+        while (low<variance.getRowVariance().length && variance.getRowVariance()[low++]<1000.0);
+        while (high >low && variance.getRowVariance()[high--]<1000.0);
+
+        int low1 = 0, high1 = variance.getColMean().length-1;
+        while (low1<variance.getColVariance().length && variance.getColVariance()[low1++]<1000.0);
+        while (high1 >low1 && variance.getColVariance()[high1--]<1000.0);
+
 
 
         croppedBitmap =  Bitmap.createBitmap(bitmap,
-                0,low,bitmap.getWidth(),high-low);
+                low1,low,high1-low1,high-low);
 
 /*        System.out.println(Arrays.toString(variance.getRowVariance()));
         System.out.println(Arrays.toString(variance.getRowMean()));
