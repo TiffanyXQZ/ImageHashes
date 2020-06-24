@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         String[] infos = new String[imHashes.size()];
         for (int i = 0; i <imHashes.size() ; i++) {
             infos[i] = "Image " + Integer.toString(i)
+                    + "\nName: " + imHashes.get(i).getName()
                     + "\nNumber of pixels: " + imHashes.get(i).getNum_pixel()
                     + "\nNumber of colors: " + imHashes.get(i).getNum_color()
                     + "\nNumber of buckets: " + imHashes.get(i).getNum()
@@ -163,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         for (ImageData_MinHash imageData : imData_List) {
             System.out.println("-----------------\n");
             System.out.printf("Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of " + imageData.getName()
-                    + " to a00001 are: " + minhash.similarity(imData_List.get(index).getMin_hash(),
+                    + " to a00000 are: " + minhash.similarity(imData_List.get(index).getMin_hash(),
                     imageData.getMin_hash()) + " and " +
                     minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash()) + " and " +
                     WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()) + "\n");
