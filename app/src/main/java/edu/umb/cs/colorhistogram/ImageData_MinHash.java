@@ -16,40 +16,16 @@ import java.util.Map;
 import edu.umb.cs.lsh.MyMinHash;
 import lombok.Getter;
 import lombok.Setter;
- /*
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- * */
+
 
 @Getter
 public class ImageData_MinHash {
-
-    /*
-    * @param pList R G B 's property and their bucket num
-    * @param pixel_objs Pixel[][]  all pixel converted to Pixel(row,col, color)
-    *
-    * @param name  the original image name
-    * @param num   the number of buckets for RGB to integers
-    *
-    *
-    *
-    * */
-
-
     private String name;
     private long time_rgbhashing;
     private long time_minhashing;
     private int num;//num: number of buckets for RGB to integers.
     private int num_color;
-    private int num_pixel;
+    private int num_pixel,width,height;
     private Map<Integer,Integer> color_hist;
     private Map<Integer,Integer> sorted_color_hist;
     private int[] pixel_hash;
@@ -60,6 +36,7 @@ public class ImageData_MinHash {
     public static int getN(){
         return n;
     }
+    private boolean isOrigin=false;
     @Getter
     @Setter
     private static int[] range = {2,10};
@@ -69,14 +46,6 @@ public class ImageData_MinHash {
     private class Pixel{
         //List<PixelProperty> pList=new ArrayList<PixelProperty>();
         int x,y,col;
-        /*
-        * @param x  the row index of a pixel
-        * @param y  the col index of a pixel
-        * @param col  the value of a color
-        *
-        * */
-
-
         Pixel(int x, int y, int col){
             this.x=x;this.y=y;this.col=col;
         }
@@ -107,29 +76,12 @@ public class ImageData_MinHash {
         }
     }
 
-    /*
-    *
-    *
-    *
-    * getIdx() return the RGB hashvalues
-    *
-    * */
-
-
     interface PixelProperty{
         String name=null;
         int min=0, max=0;
         int getRange();
         int getIdx(Object... arg);
     }
-
-    /*
-    *
-    *
-    *
-    *
-    * */
-
 
     private abstract class ColorProperty implements PixelProperty{
         String name;
@@ -141,8 +93,6 @@ public class ImageData_MinHash {
             if(num>0) return num;
             else return max-min+1;
         }
-
-
         public int getIdx(Object... arg){ //int val, int num
             int val=getVal((Integer)arg[0]);
             int w=(int)Math.ceil((float)256/num);
@@ -175,18 +125,6 @@ public class ImageData_MinHash {
             return Color.green(val);
         }
     }
-
-
-/*
-*
-*
-*
-*
-*
-*
-* */
-
-
 
     private class neighborRProperty implements PixelProperty{
         String name;
@@ -235,15 +173,6 @@ public class ImageData_MinHash {
         this.calculate_rgbhash(bitmap);
     }*/
 
-    /*
-    * @param
-    *
-    *
-    *
-    * */
-
-
-
     void init_pList(){
         pList.add(new gProperty("blue",0,255, num));
         pList.add(new bProperty("green",0,255, num));
@@ -251,26 +180,15 @@ public class ImageData_MinHash {
         //pList.add(new rProperty("neight_red",0,255,num)); //test another property
     }
 
-    /*
-    *
-    *  Creating pixel_object and initilizing pList for this image
-    *
-    *
-    * @param name image name
-    * @param bitmap  image bitmap
-    * @param num bucket number for RGB hashing
-    * @param minhash  minhash
-    *
-    * */
-
-
-
-
-    public ImageData_MinHash(String name, Bitmap bitmap, int num, MyMinHash minHash) {
+    public ImageData_MinHash(String name, Bitmap bitmap, int num, MyMinHash minHash, boolean isOrigin) {
         this.name = name;
         this.num = num;
-        this.num_pixel = bitmap.getWidth() * bitmap.getHeight();
-        pixel_objs = new Pixel[bitmap.getWidth()][bitmap.getHeight()];
+        this.width=bitmap.getWidth();
+        this.height=bitmap.getHeight();
+        this.isOrigin=isOrigin;
+
+        this.num_pixel = width*height;//bitmap.getWidth() * bitmap.getHeight();
+        pixel_objs = new Pixel[width][height];//new Pixel[bitmap.getWidth()][bitmap.getHeight()];
 
         init_pList();
 
@@ -278,16 +196,7 @@ public class ImageData_MinHash {
         this.calculate_minhash(bitmap,minHash);
     }
 
-/*
-*   Initializing pixel_objects
-*   Initializing pixels_Hash: Calculating the RGB hash for each pixel object into pixels_Hash by pixel.calHash
-*
-*
-*   More
-*
-*
-* @param bitmap
-* */
+
     private void calculate_rgbhash(Bitmap bitmap) {
         long duration, startTime,endTime;
 
@@ -309,26 +218,35 @@ public class ImageData_MinHash {
         startTime = System.nanoTime();
         int[] pixels_Hash = new int[this.num_pixel];
         int w=(int)Math.ceil((float)256/this.num);
+        /*
         for (int j=0;j<this.num_pixel;j++) {
-            /*int red = Color.red(pixels[j]);
+
+            int red = Color.red(pixels[j]);
             int green = Color.green(pixels[j]);
             int blue = Color.blue(pixels[j]);
 
             pixels_Hash[j] = (int) Math.floor(red / w) * num * num
                     + (int) Math.floor(green / w) * num
                     + (int) Math.floor(blue / w);
+            }
             */
-            Pixel pobj=pixel_objs[j%bitmap.getWidth()][j/bitmap.getWidth()];
-            pixels_Hash[j] = pobj.calHash();
-        }
-        this.pixel_hash = pixels_Hash;
+        for(int i=0;i<width;i++)
+            for(int j=0;j<height;j++) {
+                Pixel pobj = pixel_objs[i][j];
 
+                if(!isOrigin&&inTLconer(pobj))//frame images filtering
+                    pixels_Hash[i+j*width]=-1;
+                else  pixels_Hash[i+j*width] = pobj.calHash();
+            }
+
+        System.out.printf("%s: before %d\t",name, pixels_Hash.length);
+        pixels_Hash = removeNegativeValue(pixels_Hash);
+        System.out.printf("after %d\n",pixels_Hash.length);
+
+        this.pixel_hash = pixels_Hash;
         endTime = System.nanoTime();
         duration = endTime - startTime;
         this.time_rgbhashing = duration;
-
-
-        filterPixelHash();// filter -1 RGB hash value
 
 
         //pixel_hash histogtram
@@ -355,30 +273,33 @@ public class ImageData_MinHash {
         this.sorted_color_hist = sortedMap;
     }
 
-    private void shrink(int[] arr, int j){
-
-        int[] a = new int[j];
-        for (int i = 0; i < j; i++) {
-            a[i] = arr[i];
-        }
-        arr = a;
+    /*
+    in top-left corner
+     */
+    private boolean inTLconer(Pixel p){
+        float threshold= (float) 0.1;
+        int x=p.getX(), y=p.getY();
+        if((x<threshold*width)&&(y<threshold*height))
+        return true;
+        else return false;
     }
-
-
-    private void filterPixelHash(){
+    private int[] removeNegativeValue(int[] input){
+        int[] ret=null;
+        int count=0;
+        for(int i: input){
+            if(i>=0) count++;
+        }
+        ret=new int[count];
         int j=0;
-        for (int i = 0; i < pixel_hash.length; i++) {
-            if(pixel_hash[i]==-1)
-                pixel_hash[j++] = pixel_hash[i];
+        for(int i: input){
+            if(i>=0) ret[j++]=i;
         }
-        shrink(pixel_hash, j);
-
+        return ret;
     }
-
-
 
     private void calculate_minhash(Bitmap bitmap, MyMinHash minHash) {
         long duration, startTime,endTime;
+
         startTime = System.nanoTime();
         int[] min_hash = minHash.signature(this.color_hist.keySet());//this minHash is the minhash value of this image
         endTime = System.nanoTime();

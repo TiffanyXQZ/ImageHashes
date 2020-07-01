@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +14,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.opencv.android.OpenCVLoader;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import edu.umb.cs.lsh.MyMinHash;
@@ -33,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Bitmap> crop_bitmaps = new ArrayList<>();
 
     private List<Integer> imsID = new ArrayList<>();
+    private String origin_file="a00000";
 
     int index = 0;// image index to be compared
     int num = 10;//num: number of buckets for RGB to integers.
@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
         Field[] drawablesFields = R.drawable.class.getFields();
 
         System.out.println(drawablesFields.length);
-
+        if (!OpenCVLoader.initDebug()) {
+            OpenCVLoader.initDebug();
+        }
 
         for (int i = 0; i < drawablesFields.length; i++) {
             Field field = drawablesFields[i];
@@ -58,7 +60,10 @@ public class MainActivity extends AppCompatActivity {
                         !field.getName().startsWith("b")) continue;
 
 //                if (field.getName()!="a1") continue;
-                if (field.getName() == "abc_ab_share_pack_mtrl_alpha") continue;
+                //if (field.getName() == "abc_ab_share_pack_mtrl_alpha") continue;
+
+                boolean isOrigin=(origin_file.equals(field.getName())); //check if it's the online (origin) image
+
 
 //                Drawable img = getResources().getDrawable(field.getInt(null));
                 Bitmap bmp = BitmapFactory.decodeResource(getResources(), field.getInt(null));
@@ -68,7 +73,10 @@ public class MainActivity extends AppCompatActivity {
                 bitmaps.add(bmp);
                 crop_bitmaps.add(imageData.getCroppedBitmap());
                 imageBitmaps.add(new ImageBitmaps(field.getName(), bmp));
-                ImageData_MinHash imdata = new ImageData_MinHash(field.getName(), imageData.getCroppedBitmap(), num, minhash);
+
+                Bitmap img= isOrigin ? imageData.getCroppedBitmap() : bmp; //only crop online image
+
+                ImageData_MinHash imdata = new ImageData_MinHash(field.getName(), img, num, minhash,isOrigin);
                 imData_List.add(imdata);
 
 
