@@ -198,6 +198,7 @@ public class ImageData_MinHash {
 
 
     private void calculate_rgbhash(Bitmap bitmap) {
+
         long duration, startTime,endTime;
 
         int[] pixels = new int[this.num_pixel];

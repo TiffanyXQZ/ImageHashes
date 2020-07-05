@@ -36,7 +36,7 @@ public class AverageDifferenceBySize {
 
         List<ImageData_MinHash> ims = new ArrayList<>();
         for (ImageBitmaps bitmap:imageBitmaps){
-            ims.add(new ImageData_MinHash(bitmap.getName(),bitmap.getBitmap(),num_bucket,minHash));
+            ims.add(new ImageData_MinHash(bitmap.getName(),bitmap.getBitmap(),num_bucket,minHash,true));
         }
         double jac,minSim, diff=0;
         ImageData_MinHash imageData = ims.get(index);

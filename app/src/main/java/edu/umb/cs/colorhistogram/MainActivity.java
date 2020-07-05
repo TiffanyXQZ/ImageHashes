@@ -18,6 +18,7 @@ import org.opencv.android.OpenCVLoader;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import edu.umb.cs.lsh.MyMinHash;
@@ -32,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Bitmap> crop_bitmaps = new ArrayList<>();
 
     private List<Integer> imsID = new ArrayList<>();
-    private String origin_file="a00000";
-
+    private HashMap<String, Integer> origin_file = new HashMap<String, Integer>();
     int index = 0;// image index to be compared
     int num = 10;//num: number of buckets for RGB to integers.
     int seed = 2020;
@@ -51,35 +51,46 @@ public class MainActivity extends AppCompatActivity {
             OpenCVLoader.initDebug();
         }
 
+        origin_file.put("a1g", -1);
+        origin_file.put("a2g", -1);
+        origin_file.put("a3g", -1);
+        origin_file.put("a4g", -1);
+        origin_file.put("a5g", -1);
+        origin_file.put("a6g", -1);
+        origin_file.put("a7g", -1);
+        origin_file.put("a8g", -1);
+        int j=0;
         for (int i = 0; i < drawablesFields.length; i++) {
             Field field = drawablesFields[i];
 
             try {
 
-                if(!field.getName().startsWith("a00") &&
-                        !field.getName().startsWith("b")) continue;
-
-//                if (field.getName()!="a1") continue;
-                //if (field.getName() == "abc_ab_share_pack_mtrl_alpha") continue;
-
-                boolean isOrigin=(origin_file.equals(field.getName())); //check if it's the online (origin) image
+                if (!field.getName().startsWith("a") ) continue;
 
 
-//                Drawable img = getResources().getDrawable(field.getInt(null));
+                boolean isOrigin = (origin_file.containsKey(field.getName())); //check if it's the online (origin) image
+
+
                 Bitmap bmp = BitmapFactory.decodeResource(getResources(), field.getInt(null));
                 if (bmp == null) continue;
-                imsID.add( field.getInt(null));
+
+
+
+                imsID.add(field.getInt(null));
                 ImageData imageData = new ImageData(bmp);
                 bitmaps.add(bmp);
                 crop_bitmaps.add(imageData.getCroppedBitmap());
                 imageBitmaps.add(new ImageBitmaps(field.getName(), bmp));
 
-                Bitmap img= isOrigin ? imageData.getCroppedBitmap() : bmp; //only crop online image
+                Bitmap img = isOrigin ? imageData.getCroppedBitmap() : bmp; //only crop online image
 
-                ImageData_MinHash imdata = new ImageData_MinHash(field.getName(), img, num, minhash,isOrigin);
+                System.out.println("j:" + j);
+
+                ImageData_MinHash imdata = new ImageData_MinHash(field.getName(), img, num, minhash, isOrigin);
                 imData_List.add(imdata);
-
-
+                if (isOrigin) origin_file.put(field.getName(),j);
+                j++;
+                if(j>=25) break;
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -103,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         private List<Integer> bitmaps;
         private String[] infos;
 
-        public MyAdapter(Context c,List<Integer> bitmaps, String[] objects) {
+        public MyAdapter(Context c, List<Integer> bitmaps, String[] objects) {
             super(c, R.layout.row, objects);
             this.bitmaps = bitmaps;
             infos = objects;
@@ -120,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             ImageView img = (ImageView) row.findViewById(R.id.image);
-            ImageView imgCrop =  (ImageView) row.findViewById(R.id.imageCropped);
+            ImageView imgCrop = (ImageView) row.findViewById(R.id.imageCropped);
 
             img.setImageResource(bitmaps.get(position));
             imgCrop.setImageBitmap(crop_bitmaps.get(position));
@@ -128,11 +139,9 @@ public class MainActivity extends AppCompatActivity {
 //            imgCrop.setImageBitmap(bitmaps.get(0));
 
 
-
             TextView txv = row.findViewById(R.id.info);
 
             txv.setText(infos[position]);
-
 
 
             return row;
@@ -142,9 +151,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public String[] imageInfo(List<ImageData_MinHash> imHashes){
+    public String[] imageInfo(List<ImageData_MinHash> imHashes) {
         String[] infos = new String[imHashes.size()];
-        for (int i = 0; i <imHashes.size() ; i++) {
+        for (int i = 0; i < imHashes.size(); i++) {
             infos[i] = "Image " + Integer.toString(i)
                     + "\nName: " + imHashes.get(i).getName()
                     + "\nNumber of pixels: " + imHashes.get(i).getNum_pixel()
@@ -163,29 +172,38 @@ public class MainActivity extends AppCompatActivity {
         }
         return infos;
     }
+
     private void print() {
         //     Consider all colors
 //     Print minhash similarity between each image to a00000.jpg
 //     Print Real Jaccard similarity between each image to a00000.jpg
 //     Print Weighted Jaccard similarity between each image to a00000.jpg
 
-        for (ImageData_MinHash imageData : imData_List) {
-            System.out.println("-----------------\n");
-            System.out.printf("Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of " + imageData.getName()
-                    + " to a00000 are: " + minhash.similarity(imData_List.get(index).getMin_hash(),
-                    imageData.getMin_hash()) + " and " +
-                    minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash()) + " and " +
-                    WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()) + "\n");
+
+        for (String name: origin_file.keySet() ){
+            int index = origin_file.get(name);
+
+            if(index==-1) continue;
+            for (ImageData_MinHash imageData : imData_List) {
+
+                if (imageData.getName().startsWith(name.substring(0,2))){
+                    System.out.println("-----------------\n");
+                    System.out.printf("Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of " + imageData.getName()
+                            + " to " + name + " are: " + minhash.similarity(imData_List.get(index).getMin_hash(),
+                            imageData.getMin_hash()) + " and " +
+                            minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash()) + " and " +
+                            WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()) + "\n");
+
+                }
+
+            }
+
         }
+
+
+
+
     }
-
-
-
-
-
-
-
-
 
 
 }
