@@ -1,0 +1,156 @@
+RGB number of buckets = 10
+
+Observations:
+1. Some Google images' colors are usually too bright (pepsi, poland spring or other waters, MtnDew) compare to real products in video clips.
+2. Plastic bottle products (high transparency packages) are not good objects to test, since the lighting makes huge difference between google images and video clips.
+3. Since MinHash compare a list of non-repeated colors and not count repeated colors into similarity comparison, so for example if both objects are very different,
+(pepsi box and coke cola box) but both have white and red colors, and the similarity will be high since pepsi only has white, red, blue and coke only has red and 
+white.
+4. Most likely objects with solid package (low transparency) get better accuracy.
+
+Testing Logs:
+
+a1g.jpg -->VitaCoCo google image
+a11, a12, a13, a14, a15 --> VitaCoCo video clip cropped images
+a64, a33 --> false video clip cropped images
+
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a11 to a1g are: 0.5 and 0.328 and 0.14541325
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a12 to a1g are: 0.5833333333333334 and 0.36947791164658633 and 0.1332871
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a13 to a1g are: 0.6666666666666666 and 0.40357852882703776 and 0.14377941
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a14 to a1g are: 0.5833333333333334 and 0.4254032258064516 and 0.15094186
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a15 to a1g are: 0.7083333333333334 and 0.5939278937381404 and 0.15987316
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a1g to a1g are: 1.0 and 1.0 and 1.0
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a33 to a1g are: 0.20833333333333334 and 0.3488372093023256 and 0.08471659
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a64 to a1g are: 0.3333333333333333 and 0.32342007434944237 and 0.049279146
+
+
+
+
+a2g.jpg -->diet coke google image
+a21, a22, a23, a24, a25 --> diet coke video clip cropped images
+a32, a55 --> false video clip cropped images
+
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a21 to a2g are: 0.6666666666666666 and 0.7517241379310344 and 0.3238761
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a22 to a2g are: 0.7083333333333334 and 0.75625 and 0.3243546
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a23 to a2g are: 0.625 and 0.8145695364238411 and 0.25381136
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a24 to a2g are: 0.625 and 0.7167630057803468 and 0.24974303
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a25 to a2g are: 0.5416666666666666 and 0.6722222222222223 and 0.27489883
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a2g to a2g are: 1.0 and 1.0 and 1.0
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a32 to a2g are: 0.4583333333333333 and 0.5062240663900415 and 0.05826408
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a55 to a2g are: 0.125 and 0.2833333333333333 and 0.1025275
+
+
+
+
+
+a3g.jpg -->pepsi 12 can box google image
+a31, a32, a33, a34, a35 --> pepsi 12 can box video clip cropped images
+a64, a15 --> false video clip cropped images
+
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a31 to a3g are: 0.5 and 0.5490909090909091 and 0.12692699
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a32 to a3g are: 0.5416666666666666 and 0.6070175438596491 and 0.10558176
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a33 to a3g are: 0.4166666666666667 and 0.6360294117647058 and 0.08856394
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a34 to a3g are: 0.625 and 0.6666666666666666 and 0.06646181
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a35 to a3g are: 0.5416666666666666 and 0.6398601398601399 and 0.04826017
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a3g to a3g are: 1.0 and 1.0 and 1.0
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a15 to a3g are: 0.25 and 0.43658536585365854 and 0.040749706
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a73 to a3g are: 0.125 and 0.27017543859649124 and 0.015896559
+
+
+
+
+
+a4g.jpg -->7UP 12 pack box google image
+a41, a42, a43, a44, a45 --> 7UP 12 pack box video clip cropped images
+a55, a15 --> false video clip cropped images
+	 --> Note: a64 is highly similar to a3g on overall colors (MtnDew vs. 7UP)
+
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a41 to a4g are: 0.6666666666666666 and 0.6181818181818182 and 0.0788874
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a42 to a4g are: 0.5833333333333334 and 0.6134831460674157 and 0.08934156
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a43 to a4g are: 0.75 and 0.7200902934537246 and 0.15777507
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a44 to a4g are: 0.7083333333333334 and 0.6883408071748879 and 0.13435608
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a45 to a4g are: 0.625 and 0.6741573033707865 and 0.12832998
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a4g to a4g are: 1.0 and 1.0 and 1.0
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a55 to a4g are: 0.125 and 0.11827956989247312 and 0.033549204
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a85 to a4g are: 0.5833333333333334 and 0.48060344827586204 and 0.09158398
+
+
+
+
+
+a7g.jpg -->CocaCola 12 pack box google image
+a71, a72, a73, a74, a75 --> CocaCola 12 pack box video clip cropped images
+a32, a45 --> false video clip cropped images
+
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a71 to a7g are: 0.6666666666666666 and 0.6772151898734177 and 0.1889809
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a72 to a7g are: 0.7916666666666666 and 0.7468354430379747 and 0.18376614
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a73 to a7g are: 0.7083333333333334 and 0.7290322580645161 and 0.18956514
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a74 to a7g are: 0.6666666666666666 and 0.6363636363636364 and 0.18541563
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a75 to a7g are: 0.625 and 0.6064516129032258 and 0.2609827
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a7g to a7g are: 1.0 and 1.0 and 1.0
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a32 to a7g are: 0.5 and 0.5358649789029536 and 0.033644475
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a45 to a7g are: 0.08333333333333333 and 0.22849462365591397 and 0.071411446
+    -----------------
+
+
+
+
+
+a8g.jpg -->mountain dew google image
+a81, a82, a83, a84, a85 --> mountain dew video clip cropped images
+a43, a54 --> false video clip cropped images
+	 --> Note: a43 is highly similar to a8g on overall colors
+	 --> Also: since the lighting of google image is very different than the video clips, the similarity is not accurate.
+
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a81 to a8g are: 0.4166666666666667 and 0.43609022556390975 and 0.037943263
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a82 to a8g are: 0.5 and 0.4760705289672544 and 0.046462666
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a83 to a8g are: 0.375 and 0.49747474747474746 and 0.055115484
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a84 to a8g are: 0.4166666666666667 and 0.44139650872817954 and 0.059037853
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a85 to a8g are: 0.5 and 0.47715736040609136 and 0.07069271
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a43 to a8g are: 0.625 and 0.556872037914692 and 0.10547265
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a54 to a8g are: 0.125 and 0.15083798882681565 and 0.1006206
+    -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of a8g to a8g are: 1.0 and 1.0 and 1.0
+
+

@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         Field[] drawablesFields = R.drawable.class.getFields();
 
         System.out.println(drawablesFields.length);
-        if (!OpenCVLoader.initDebug()) {
+       if (!OpenCVLoader.initDebug()) {
             OpenCVLoader.initDebug();
         }
 
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             try {
 
                 if (!field.getName().startsWith("a") ) continue;
+                if (field.getName().startsWith("ab")) continue;
 
 
                 boolean isOrigin = (origin_file.containsKey(field.getName())); //check if it's the online (origin) image
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Bitmap bmp = BitmapFactory.decodeResource(getResources(), field.getInt(null));
                 if (bmp == null) continue;
-
+                System.out.println(field.getName());
 
 
                 imsID.add(field.getInt(null));
@@ -186,7 +187,8 @@ public class MainActivity extends AppCompatActivity {
             if(index==-1) continue;
             for (ImageData_MinHash imageData : imData_List) {
 
-                if (imageData.getName().startsWith(name.substring(0,2))){
+                if (imageData.getName().startsWith(name.substring(0,2))
+                || imageData.getName().startsWith("a")){
                     System.out.println("-----------------\n");
                     System.out.printf("Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of " + imageData.getName()
                             + " to " + name + " are: " + minhash.similarity(imData_List.get(index).getMin_hash(),
