@@ -1,12 +1,16 @@
+All images mentioned below can be found in the Data folder.
 RGB number of buckets = 10
 
 Observations:
+
 1. Some Google images' colors are usually too bright (pepsi, poland spring or other waters, MtnDew) compare to real products in video clips.
 2. Plastic bottle products (high transparency packages) are not good objects to test, since the lighting makes huge difference between google images and video clips.
 3. Since MinHash compare a list of non-repeated colors and not count repeated colors into similarity comparison, so for example if both objects are very different,
 (pepsi box and coke cola box) but both have white and red colors, and the similarity will be high since pepsi only has white, red, blue and coke only has red and 
 white.
 4. Most likely objects with solid package (low transparency) get better accuracy.
+
+
 
 Testing Logs:
 
