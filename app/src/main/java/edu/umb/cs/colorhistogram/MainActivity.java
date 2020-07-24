@@ -73,17 +73,14 @@ public class MainActivity extends AppCompatActivity {
         origin_file.put("a6g", -1);
         origin_file.put("a7g", -1);
         origin_file.put("a8g", -1);
-        int j=0;
+        int j = 0;
 
-        for (String name : images.keySet() ) {
+        for (String name : images.keySet()) {
             Bitmap bmp = images.get(name);
 
-<<<<<<< HEAD
             boolean isOrigin = (origin_file.containsKey(name)); //check if it's the online (origin) image
-=======
-                if (!field.getName().startsWith("a") ) continue;
-                if (field.getName().startsWith("ab")) continue;
->>>>>>> fe2e785adb4bc38e391c1e2ca8bea08ae943921f
+            if (name.startsWith("a")) continue;
+            if (name.startsWith("ab")) continue;
 
 
             ImageData imageData = new ImageData(bmp);
@@ -93,26 +90,14 @@ public class MainActivity extends AppCompatActivity {
 
             Bitmap img = isOrigin ? imageData.getCroppedBitmap() : bmp; //only crop online image
 
-<<<<<<< HEAD
 
             ImageData_MinHash imdata = new ImageData_MinHash(name, img, num, minhash, isOrigin);
             imData_List.add(imdata);
-            if (isOrigin) origin_file.put(name,j);
+            if (isOrigin) origin_file.put(name, j);
             j++;
-            if(j>=25) break;
+            if (j >= 25) break;
 
         }
-=======
-                Bitmap bmp = BitmapFactory.decodeResource(getResources(), field.getInt(null));
-                if (bmp == null) continue;
-                System.out.println(field.getName());
-//>>>>>>> fe2e785adb4bc38e391c1e2ca8bea08ae943921f
-
-
-
-
-
-
 
 
         print();
@@ -128,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
     private class MyAdapter extends ArrayAdapter<String> {
         Context context;
-//        private List<Integer> bitmaps;
+        //        private List<Integer> bitmaps;
         private String[] infos;
 
         public MyAdapter(Context c, String[] objects) {
@@ -196,14 +181,14 @@ public class MainActivity extends AppCompatActivity {
 //     Print Weighted Jaccard similarity between each image to a00000.jpg
 
 
-        for (String name: origin_file.keySet() ){
+        for (String name : origin_file.keySet()) {
             int index = origin_file.get(name);
 
-            if(index==-1) continue;
+            if (index == -1) continue;
             for (ImageData_MinHash imageData : imData_List) {
 
-                if (imageData.getName().startsWith(name.substring(0,2))
-                || imageData.getName().startsWith("a")){
+                if (imageData.getName().startsWith(name.substring(0, 2))
+                        || imageData.getName().startsWith("a")) {
                     System.out.println("-----------------\n");
                     System.out.printf("Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of " + imageData.getName()
                             + " to " + name + " are: " + minhash.similarity(imData_List.get(index).getMin_hash(),
@@ -216,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void loadImageData() throws IllegalAccessException {
         Field[] drawablesFields = R.drawable.class.getFields();
         images = new HashMap<>();
@@ -227,10 +211,6 @@ public class MainActivity extends AppCompatActivity {
             images.put(name, bmp);
         }
     }
-
-
-
-
 
 
 }
