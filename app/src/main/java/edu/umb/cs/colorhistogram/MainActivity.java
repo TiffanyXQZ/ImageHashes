@@ -3,6 +3,7 @@ package edu.umb.cs.colorhistogram;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -16,8 +17,14 @@ import android.widget.TextView;
 
 //import org.opencv.android.OpenCVLoader;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,11 +34,10 @@ import edu.umb.cs.lsh.WeightedJaccard;
 public class MainActivity extends AppCompatActivity {
 
     private MyAdapter adapt;
-    private HashMap<String, Bitmap> images;
+    private HashMap<String, Bitmap> images = new HashMap<>();
 
 
     private List<ImageData_MinHash> imData_List = new ArrayList<>();
-    private List<ImageBitmaps> imageBitmaps = new ArrayList<>();
     private List<Bitmap> bitmaps = new ArrayList<>();
     private List<Bitmap> crop_bitmaps = new ArrayList<>();
 
@@ -47,11 +53,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try {
-            loadImageData();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+
+
+        loadImageFromAssets();
+
+
+//        try {
+//            loadImageData();
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        }
 
 
 //<<<<<<< HEAD
@@ -65,28 +76,28 @@ public class MainActivity extends AppCompatActivity {
 ////        }
 //>>>>>>> fe2e785adb4bc38e391c1e2ca8bea08ae943921f
 
-        origin_file.put("a1g", -1);
-        origin_file.put("a2g", -1);
-        origin_file.put("a3g", -1);
-        origin_file.put("a4g", -1);
-        origin_file.put("a5g", -1);
-        origin_file.put("a6g", -1);
-        origin_file.put("a7g", -1);
-        origin_file.put("a8g", -1);
+
+        String originfiles[] = {"ai10.jpg","ai20.png","ai30.jpg","ai40.jpg","ai50.jpg"};
+
+        String originfile = originfiles[4];
+        origin_file.put(originfile, -1);
         int j = 0;
 
         for (String name : images.keySet()) {
+
             Bitmap bmp = images.get(name);
 
-            boolean isOrigin = (origin_file.containsKey(name)); //check if it's the online (origin) image
-            if (name.startsWith("a")) continue;
-            if (name.startsWith("ab")) continue;
 
+
+            System.out.println();
+            if (!name.startsWith(originfile.substring(0,3))) continue;
+            boolean isOrigin = (origin_file.containsKey(name)); //check if it's the online (origin) image
+
+            System.out.println(name);
 
             ImageData imageData = new ImageData(bmp);
             bitmaps.add(bmp);
             crop_bitmaps.add(imageData.getCroppedBitmap());
-            imageBitmaps.add(new ImageBitmaps(name, bmp));
 
             Bitmap img = isOrigin ? imageData.getCroppedBitmap() : bmp; //only crop online image
 
@@ -95,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             imData_List.add(imdata);
             if (isOrigin) origin_file.put(name, j);
             j++;
-            if (j >= 25) break;
+//            if (j >= 25) break;
 
         }
 
@@ -179,31 +190,100 @@ public class MainActivity extends AppCompatActivity {
 //     Print minhash similarity between each image to a00000.jpg
 //     Print Real Jaccard similarity between each image to a00000.jpg
 //     Print Weighted Jaccard similarity between each image to a00000.jpg
-
+        System.out.println("hello from print");
 
         for (String name : origin_file.keySet()) {
             int index = origin_file.get(name);
-
+            System.out.println(name);
+            System.out.println(index );
             if (index == -1) continue;
+            System.out.println(imData_List.size());
+
+
+//            System.out.println(Arrays.toString(name.split("\\.")));
+//            String path = "/home/haoyu/projects/ImageHashes/Data/data/" + name.split("\\.")[0] + ".txt";
+
+            String path = name.split("\\.")[0] + ".txt";
             for (ImageData_MinHash imageData : imData_List) {
 
-                if (imageData.getName().startsWith(name.substring(0, 2))
-                        || imageData.getName().startsWith("a")) {
-                    System.out.println("-----------------\n");
-                    System.out.printf("Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of " + imageData.getName()
-                            + " to " + name + " are: " + minhash.similarity(imData_List.get(index).getMin_hash(),
-                            imageData.getMin_hash()) + " and " +
-                            minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash()) + " and " +
-                            WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()) + "\n");
+                startTime = System.nanoTime();
+                double realJaccard =  minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash());
+                long realJacTime = System.nanoTime() - startTime;
+
+                startTime = System.nanoTime();
+                double minHashSimi =   minhash.similarity(imData_List.get(index).getMin_hash(), imageData.getMin_hash()) ;
+                long mHTime = System.nanoTime() - startTime;
+
+
+                startTime = System.nanoTime();
+                double weiSim =   WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()) ;
+                long wHTime = System.nanoTime() - startTime;
+
+
+
+                String log = "-----------------\n" + "Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of " + imageData.getName()
+                        + " to " + name + " are: " + minHashSimi + " and " +  realJaccard + " and " +weiSim  + "\n"+
+
+
+                        "RGBHashing time" + imageData.getTime_rgbhashing() +"\n"+
+                                "minHashing time" + imageData.getTime_minhashing() +
+
+                                "realJacard time" + realJacTime +"\n"+
+                "MinHashing Similarity time" + mHTime +"\n"+
+                        "weightedJaccard Similarity time" + wHTime
+
+                        ;
+                System.out.println(log);
+
+
+                try {
+
+                    FileOutputStream fOut = openFileOutput(path, MODE_APPEND);
+//                    System.out.println(fOut.getFD().toString());
+                    OutputStreamWriter osw = new OutputStreamWriter(fOut);
+                    osw.write(log);
+                    osw.flush();
+                    osw.close();
+
+                } catch (IOException e) {
+
+                }
+
+
+            }
+        }
+    }
+
+
+    private void loadImageFromAssets() {
+        System.out.println("hell");
+        String[] list;
+        String path = "isis";
+        try {
+            list = getAssets().list(path);
+//            System.out.println(list.length);
+            if (list.length > 0) {
+                // This is a folder
+                for (String file : list) {
+//                    System.out.println(file);
+
+                    InputStream inIm = getResources().getAssets().open(path + '/' + file);
+
+                    Bitmap bitmap = BitmapFactory.decodeStream(inIm);
+                    System.out.println(bitmap.getHeight());
+                    images.put(file, bitmap);
+//                    inIm.close();
+
                 }
             }
+        } catch (IOException e) {
+
         }
     }
 
 
     private void loadImageData() throws IllegalAccessException {
         Field[] drawablesFields = R.drawable.class.getFields();
-        images = new HashMap<>();
         for (int i = 0; i < drawablesFields.length; i++) {
             String name = drawablesFields[i].getName();
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), drawablesFields[i].getInt(null));

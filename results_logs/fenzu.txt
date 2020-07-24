@@ -1,0 +1,305 @@
+ALl Datasets located in: app/src/main/assets/
+Below Dataset: ISIS Image library locates in app/src/main/assets/isis (tengpeng's library)
+5 groups of objects, each ai#0 is the front view and all other ai#n images are the object twisted with certain angles will compare with the ai#0.
+
+
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai12.jpg to ai10.jpg are: 0.9583333333333334 and 0.7948717948717948 and 0.6088482737541199
+    RGBHashing time158757292
+    minHashing time3447916realJacard time56819270
+    MinHashing Similarity time19792
+    weightedJaccard Similarity time14308854
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai18.jpg to ai10.jpg are: 0.9583333333333334 and 0.7794871794871795 and 0.6626303195953369
+    RGBHashing time123330208
+    minHashing time2472396realJacard time37396354
+    MinHashing Similarity time17709
+    weightedJaccard Similarity time2842188
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai11.jpg to ai10.jpg are: 0.9583333333333334 and 0.8555555555555555 and 0.661509096622467
+    RGBHashing time129684375
+    minHashing time980729realJacard time37339062
+    MinHashing Similarity time18229
+    weightedJaccard Similarity time2851042
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai15.jpg to ai10.jpg are: 0.8333333333333334 and 0.8011049723756906 and 0.5193635821342468
+    RGBHashing time124356250
+    minHashing time767187realJacard time44152604
+    MinHashing Similarity time17188
+    weightedJaccard Similarity time2520833
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai10.jpg to ai10.jpg are: 1.0 and 1.0 and 1.0
+    RGBHashing time92760937
+    minHashing time704167realJacard time31820312
+    MinHashing Similarity time14584
+    weightedJaccard Similarity time1613542
+I/System.out: -----------------
+I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai16.jpg to ai10.jpg are: 0.875 and 0.8097826086956522 and 0.5483835339546204
+    RGBHashing time120326562
+    minHashing time831771realJacard time37470833
+    MinHashing Similarity time16146
+    weightedJaccard Similarity time1247396
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai14.jpg to ai10.jpg are: 0.8333333333333334 and 0.7905759162303665 and 0.48476719856262207
+    RGBHashing time120586979
+    minHashing time793229realJacard time43294271
+    MinHashing Similarity time15625
+    weightedJaccard Similarity time1305729
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai17.jpg to ai10.jpg are: 0.9583333333333334 and 0.85 and 0.6015956997871399
+    RGBHashing time131305209
+    minHashing time475000realJacard time36469792
+    MinHashing Similarity time18229
+    weightedJaccard Similarity time1445312
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai13.jpg to ai10.jpg are: 0.875 and 0.8162162162162162 and 0.5426794290542603
+    RGBHashing time173032292
+    minHashing time560937realJacard time36378125
+    MinHashing Similarity time17187
+    weightedJaccard Similarity time1082812
+
+
+
+
+
+
+
+
+  I/System.out: -----------------
+      Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai26.png to ai20.png are: 0.875 and 0.8342857142857143 and 0.4577332139015198
+      RGBHashing time525109895
+      minHashing time6388542realJacard time134169271
+      MinHashing Similarity time19791
+      weightedJaccard Similarity time18578125
+  I/System.out: -----------------
+      Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai22.png to ai20.png are: 0.875 and 0.8510028653295129 and 0.471366286277771
+      RGBHashing time492988541
+      minHashing time1336979realJacard time97554167
+      MinHashing Similarity time19792
+      weightedJaccard Similarity time5821875
+  I/System.out: -----------------
+      Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai23.png to ai20.png are: 0.8333333333333334 and 0.8542857142857143 and 0.4665866196155548
+      RGBHashing time620544271
+      minHashing time1386458realJacard time97626563
+      MinHashing Similarity time22917
+      weightedJaccard Similarity time3781771
+  I/System.out: -----------------
+      Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai28.png to ai20.png are: 0.9166666666666666 and 0.8080229226361032 and 0.4295966923236847
+      RGBHashing time415845313
+      minHashing time2001041realJacard time96406771
+      MinHashing Similarity time21875
+      weightedJaccard Similarity time2473959
+  I/System.out: -----------------
+      Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai27.png to ai20.png are: 0.875 and 0.8243626062322946 and 0.44280126690864563
+      RGBHashing time420707812
+      minHashing time1282292realJacard time108831771
+      MinHashing Similarity time16146
+      weightedJaccard Similarity time2639583
+  I/System.out: -----------------
+      Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai24.png to ai20.png are: 0.875 and 0.8546511627906976 and 0.46019935607910156
+      RGBHashing time430504166
+      minHashing time874479realJacard time96597916
+      MinHashing Similarity time19792
+      weightedJaccard Similarity time1700000
+  I/System.out: -----------------
+      Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai20.png to ai20.png are: 1.0 and 1.0 and 1.0
+      RGBHashing time225243229
+      minHashing time428645realJacard time67828125
+      MinHashing Similarity time19271
+      weightedJaccard Similarity time579687
+  I/System.out: -----------------
+      Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai25.png to ai20.png are: 0.875 and 0.8347578347578347 and 0.4721372127532959
+      RGBHashing time474066146
+      minHashing time422916realJacard time96352084
+      MinHashing Similarity time21354
+      weightedJaccard Similarity time669792
+  I/System.out: -----------------
+      Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai21.png to ai20.png are: 0.9583333333333334 and 0.8753623188405797 and 0.47859305143356323
+      RGBHashing time515426562
+      minHashing time729687realJacard time106509375
+      MinHashing Similarity time21875
+      weightedJaccard Similarity time712500
+
+
+
+
+
+
+
+
+   I/System.out: -----------------
+       Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai34.jpg to ai30.jpg are: 0.875 and 0.9067796610169492 and 0.38339948654174805
+       RGBHashing time501228645
+       minHashing time2095313realJacard time145737500
+       MinHashing Similarity time17708
+       weightedJaccard Similarity time12723958
+   I/System.out: -----------------
+       Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai33.jpg to ai30.jpg are: 0.875 and 0.8688524590163934 and 0.38534244894981384
+       RGBHashing time523845834
+       minHashing time4819271realJacard time131522396
+       MinHashing Similarity time17187
+       weightedJaccard Similarity time2102083
+   I/System.out: -----------------
+   I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai37.jpg to ai30.jpg are: 0.8333333333333334 and 0.8571428571428571 and 0.3679082691669464
+       RGBHashing time490543229
+       minHashing time575000realJacard time124709375
+       MinHashing Similarity time21875
+       weightedJaccard Similarity time1968750
+   I/System.out: -----------------
+   I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai32.jpg to ai30.jpg are: 0.875 and 0.8760330578512396 and 0.39631086587905884
+       RGBHashing time523164063
+       minHashing time492188realJacard time125004167
+       MinHashing Similarity time22917
+       weightedJaccard Similarity time1983854
+   I/System.out: -----------------
+       Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai36.jpg to ai30.jpg are: 0.7916666666666666 and 0.8099173553719008 and 0.3595297038555145
+       RGBHashing time503460417
+       minHashing time468229realJacard time127429167
+       MinHashing Similarity time21875
+       weightedJaccard Similarity time1898438
+   I/System.out: -----------------
+       Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai31.jpg to ai30.jpg are: 0.9166666666666666 and 0.9173553719008265 and 0.40989530086517334
+       RGBHashing time519885416
+       minHashing time544271realJacard time129141666
+       MinHashing Similarity time20833
+       weightedJaccard Similarity time1885938
+   I/System.out: -----------------
+       Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai38.jpg to ai30.jpg are: 0.9583333333333334 and 0.8991596638655462 and 0.37609153985977173
+       RGBHashing time576490625
+       minHashing time506771realJacard time127166667
+       MinHashing Similarity time21875
+       weightedJaccard Similarity time1141667
+   I/System.out: -----------------
+       Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai35.jpg to ai30.jpg are: 0.875 and 0.8688524590163934 and 0.35786330699920654
+       RGBHashing time499055208
+       minHashing time685416realJacard time127576563
+       MinHashing Similarity time20834
+       weightedJaccard Similarity time1232292
+   I/System.out: -----------------
+       Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai30.jpg to ai30.jpg are: 1.0 and 1.0 and 1.0
+       RGBHashing time225019271
+       minHashing time533854realJacard time78291146
+       MinHashing Similarity time20313
+       weightedJaccard Similarity time1026042
+
+
+
+
+
+
+
+
+
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai47.jpg to ai40.jpg are: 0.9166666666666666 and 0.9157894736842105 and 0.5522699952125549
+    RGBHashing time438017188
+    minHashing time1699479realJacard time26527604
+    MinHashing Similarity time6250
+    weightedJaccard Similarity time3001042
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai42.jpg to ai40.jpg are: 0.9166666666666666 and 0.8585858585858586 and 0.4896143674850464
+    RGBHashing time428359895
+    minHashing time2025000realJacard time22496875
+    MinHashing Similarity time6771
+    weightedJaccard Similarity time341667
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai41.jpg to ai40.jpg are: 0.9166666666666666 and 0.8673469387755102 and 0.5350543260574341
+    RGBHashing time542425521
+    minHashing time511979realJacard time35664062
+    MinHashing Similarity time7812
+    weightedJaccard Similarity time473438
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai40.jpg to ai40.jpg are: 1.0 and 1.0 and 1.0
+    RGBHashing time255103125
+    minHashing time422396realJacard time23162500
+    MinHashing Similarity time9375
+    weightedJaccard Similarity time420313
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai45.jpg to ai40.jpg are: 0.875 and 0.8571428571428571 and 0.49862244725227356
+    RGBHashing time463063021
+    minHashing time91666realJacard time30850000
+    MinHashing Similarity time9375
+    weightedJaccard Similarity time372917
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai44.jpg to ai40.jpg are: 0.9166666666666666 and 0.875 and 0.46029171347618103
+    RGBHashing time136160417
+    minHashing time88541realJacard time28951563
+    MinHashing Similarity time6771
+I/System.out: weightedJaccard Similarity time366666
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai48.jpg to ai40.jpg are: 0.875 and 0.8888888888888888 and 0.5760298371315002
+    RGBHashing time107913542
+    minHashing time90625realJacard time26416146
+    MinHashing Similarity time6250
+    weightedJaccard Similarity time373959
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai43.jpg to ai40.jpg are: 0.875 and 0.8235294117647058 and 0.45499369502067566
+    RGBHashing time89565104
+    minHashing time89583realJacard time26231250
+    MinHashing Similarity time6771
+    weightedJaccard Similarity time193229
+
+
+
+
+
+
+
+
+
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai55.jpg to ai50.jpg are: 0.625 and 0.6589147286821705 and 0.14812687039375305
+    RGBHashing time130016667
+    minHashing time488020realJacard time48091666
+    MinHashing Similarity time8333
+    weightedJaccard Similarity time3489584
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai51.jpg to ai50.jpg are: 0.9166666666666666 and 0.8301886792452831 and 0.6781982779502869
+    RGBHashing time118326562
+    minHashing time544791realJacard time44055208
+    MinHashing Similarity time11979
+    weightedJaccard Similarity time504688
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai50.jpg to ai50.jpg are: 1.0 and 1.0 and 1.0
+    RGBHashing time108736979
+    minHashing time125521realJacard time53995312
+    MinHashing Similarity time9896
+    weightedJaccard Similarity time460938
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai54.jpg to ai50.jpg are: 0.7916666666666666 and 0.6942148760330579 and 0.22105421125888824
+    RGBHashing time162033854
+    minHashing time109896realJacard time54486979
+    MinHashing Similarity time11459
+    weightedJaccard Similarity time410937
+
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai58.jpg to ai50.jpg are: 0.9166666666666666 and 0.7631578947368421 and 0.5766053795814514
+    RGBHashing time152650521
+    minHashing time105730realJacard time69350521
+    MinHashing Similarity time13021
+    weightedJaccard Similarity time964584
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai53.jpg to ai50.jpg are: 0.75 and 0.7094017094017094 and 0.23595018684864044
+    RGBHashing time132230209
+    minHashing time111458realJacard time63069271
+    MinHashing Similarity time13021
+    weightedJaccard Similarity time539583
+I/.colorhistogra: Wrote stack traces to tombstoned
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai52.jpg to ai50.jpg are: 0.75 and 0.7767857142857143 and 0.3835757076740265
+    RGBHashing time158723959
+    minHashing time106770realJacard time54968750
+    MinHashing Similarity time14063
+    weightedJaccard Similarity time497916
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai57.jpg to ai50.jpg are: 0.8333333333333334 and 0.7272727272727273 and 0.20791104435920715
+    RGBHashing time185627083
+    minHashing time114062realJacard time53771354
+    MinHashing Similarity time6771
+    weightedJaccard Similarity time293750
+I/System.out: -----------------
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai56.jpg to ai50.jpg are: 0.625 and 0.6466165413533834 and 0.13092847168445587
+    RGBHashing time135591146
+    minHashing time127604realJacard time53832812
+    MinHashing Similarity time5730
+    weightedJaccard Similarity time233854
