@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.opencv.android.OpenCVLoader;
+//import org.opencv.android.OpenCVLoader;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -54,9 +54,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        if (!OpenCVLoader.initDebug()) {
-            OpenCVLoader.initDebug();
-        }
+//<<<<<<< HEAD
+//        if (!OpenCVLoader.initDebug()) {
+//            OpenCVLoader.initDebug();
+//        }
+//=======
+//        System.out.println(drawablesFields.length);
+////       if (!OpenCVLoader.initDebug()) {
+////            OpenCVLoader.initDebug();
+////        }
+//>>>>>>> fe2e785adb4bc38e391c1e2ca8bea08ae943921f
 
         origin_file.put("a1g", -1);
         origin_file.put("a2g", -1);
@@ -71,7 +78,12 @@ public class MainActivity extends AppCompatActivity {
         for (String name : images.keySet() ) {
             Bitmap bmp = images.get(name);
 
+<<<<<<< HEAD
             boolean isOrigin = (origin_file.containsKey(name)); //check if it's the online (origin) image
+=======
+                if (!field.getName().startsWith("a") ) continue;
+                if (field.getName().startsWith("ab")) continue;
+>>>>>>> fe2e785adb4bc38e391c1e2ca8bea08ae943921f
 
 
             ImageData imageData = new ImageData(bmp);
@@ -81,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
             Bitmap img = isOrigin ? imageData.getCroppedBitmap() : bmp; //only crop online image
 
+<<<<<<< HEAD
 
             ImageData_MinHash imdata = new ImageData_MinHash(name, img, num, minhash, isOrigin);
             imData_List.add(imdata);
@@ -89,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
             if(j>=25) break;
 
         }
+=======
+                Bitmap bmp = BitmapFactory.decodeResource(getResources(), field.getInt(null));
+                if (bmp == null) continue;
+                System.out.println(field.getName());
+//>>>>>>> fe2e785adb4bc38e391c1e2ca8bea08ae943921f
 
 
 
@@ -184,7 +202,8 @@ public class MainActivity extends AppCompatActivity {
             if(index==-1) continue;
             for (ImageData_MinHash imageData : imData_List) {
 
-                if (imageData.getName().startsWith(name.substring(0,2))){
+                if (imageData.getName().startsWith(name.substring(0,2))
+                || imageData.getName().startsWith("a")){
                     System.out.println("-----------------\n");
                     System.out.printf("Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of " + imageData.getName()
                             + " to " + name + " are: " + minhash.similarity(imData_List.get(index).getMin_hash(),

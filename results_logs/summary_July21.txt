@@ -1,0 +1,19 @@
+Bad results for minhash since google image is too bright and transparent:
+1) a5 group
+2) a6 group
+3) a8 group ( we can try to improve since some video clips can reach 0.5)
+
+
+Good results for minhash:
+1) a1 group
+2) a2 group
+3) a3 group (except a3(pepsi) and a7(coca cola) minhash similarity = 0.5 since both have red and white color, out of a union of 4 different colors.
+4) a4 group (except a4(7 up)  and a8(mtn dew)   minhash similarity = 0.58 since their color distribution are highly similar)
+5) a7 group
+
+Bad results for weighted minhash:
+1) a3 group
+2) a4 group
+3) a5 group
+4) a6 group
+5) a8 group
