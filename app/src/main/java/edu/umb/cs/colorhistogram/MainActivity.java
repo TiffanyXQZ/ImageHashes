@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.opencv.android.OpenCVLoader;
+//import org.opencv.android.OpenCVLoader;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
         Field[] drawablesFields = R.drawable.class.getFields();
 
         System.out.println(drawablesFields.length);
-       if (!OpenCVLoader.initDebug()) {
-            OpenCVLoader.initDebug();
-        }
+//       if (!OpenCVLoader.initDebug()) {
+//            OpenCVLoader.initDebug();
+//        }
 
         origin_file.put("a1g", -1);
         origin_file.put("a2g", -1);
