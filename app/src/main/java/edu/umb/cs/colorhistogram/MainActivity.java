@@ -27,6 +27,9 @@ import edu.umb.cs.lsh.WeightedJaccard;
 public class MainActivity extends AppCompatActivity {
 
     private MyAdapter adapt;
+    private HashMap<String, Bitmap> images;
+
+
     private List<ImageData_MinHash> imData_List = new ArrayList<>();
     private List<ImageBitmaps> imageBitmaps = new ArrayList<>();
     private List<Bitmap> bitmaps = new ArrayList<>();
@@ -44,9 +47,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Field[] drawablesFields = R.drawable.class.getFields();
+        try {
+            loadImageData();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
-        System.out.println(drawablesFields.length);
+
         if (!OpenCVLoader.initDebug()) {
             OpenCVLoader.initDebug();
         }
@@ -60,49 +67,41 @@ public class MainActivity extends AppCompatActivity {
         origin_file.put("a7g", -1);
         origin_file.put("a8g", -1);
         int j=0;
-        for (int i = 0; i < drawablesFields.length; i++) {
-            Field field = drawablesFields[i];
 
-            try {
+        for (String name : images.keySet() ) {
+            Bitmap bmp = images.get(name);
 
-                if (!field.getName().startsWith("a") ) continue;
-
-
-                boolean isOrigin = (origin_file.containsKey(field.getName())); //check if it's the online (origin) image
+            boolean isOrigin = (origin_file.containsKey(name)); //check if it's the online (origin) image
 
 
-                Bitmap bmp = BitmapFactory.decodeResource(getResources(), field.getInt(null));
-                if (bmp == null) continue;
+            ImageData imageData = new ImageData(bmp);
+            bitmaps.add(bmp);
+            crop_bitmaps.add(imageData.getCroppedBitmap());
+            imageBitmaps.add(new ImageBitmaps(name, bmp));
+
+            Bitmap img = isOrigin ? imageData.getCroppedBitmap() : bmp; //only crop online image
 
 
-
-                imsID.add(field.getInt(null));
-                ImageData imageData = new ImageData(bmp);
-                bitmaps.add(bmp);
-                crop_bitmaps.add(imageData.getCroppedBitmap());
-                imageBitmaps.add(new ImageBitmaps(field.getName(), bmp));
-
-                Bitmap img = isOrigin ? imageData.getCroppedBitmap() : bmp; //only crop online image
-
-                System.out.println("j:" + j);
-
-                ImageData_MinHash imdata = new ImageData_MinHash(field.getName(), img, num, minhash, isOrigin);
-                imData_List.add(imdata);
-                if (isOrigin) origin_file.put(field.getName(),j);
-                j++;
-                if(j>=25) break;
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-
+            ImageData_MinHash imdata = new ImageData_MinHash(name, img, num, minhash, isOrigin);
+            imData_List.add(imdata);
+            if (isOrigin) origin_file.put(name,j);
+            j++;
+            if(j>=25) break;
 
         }
+
+
+
+
+
+
+
 
         print();
 
 
         String[] infos = imageInfo(imData_List);
-        adapt = new MyAdapter(this, imsID, infos);
+        adapt = new MyAdapter(this, infos);
         ListView listTask = (ListView) findViewById(R.id.listview);
         listTask.setAdapter(adapt);
 
@@ -111,12 +110,11 @@ public class MainActivity extends AppCompatActivity {
 
     private class MyAdapter extends ArrayAdapter<String> {
         Context context;
-        private List<Integer> bitmaps;
+//        private List<Integer> bitmaps;
         private String[] infos;
 
-        public MyAdapter(Context c, List<Integer> bitmaps, String[] objects) {
+        public MyAdapter(Context c, String[] objects) {
             super(c, R.layout.row, objects);
-            this.bitmaps = bitmaps;
             infos = objects;
             context = c;
         }
@@ -133,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             ImageView img = (ImageView) row.findViewById(R.id.image);
             ImageView imgCrop = (ImageView) row.findViewById(R.id.imageCropped);
 
-            img.setImageResource(bitmaps.get(position));
+            img.setImageBitmap(bitmaps.get(position));
             imgCrop.setImageBitmap(crop_bitmaps.get(position));
 //            img.setImageBitmap(bitmaps.get(position));
 //            imgCrop.setImageBitmap(bitmaps.get(0));
@@ -193,17 +191,27 @@ public class MainActivity extends AppCompatActivity {
                             imageData.getMin_hash()) + " and " +
                             minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash()) + " and " +
                             WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()) + "\n");
-
                 }
-
             }
-
         }
-
-
-
-
     }
+
+
+
+    private void loadImageData() throws IllegalAccessException {
+        Field[] drawablesFields = R.drawable.class.getFields();
+        images = new HashMap<>();
+        for (int i = 0; i < drawablesFields.length; i++) {
+            String name = drawablesFields[i].getName();
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), drawablesFields[i].getInt(null));
+            if (!name.startsWith("a1") || name.startsWith("ab")) continue;
+            images.put(name, bmp);
+        }
+    }
+
+
+
+
 
 
 }
