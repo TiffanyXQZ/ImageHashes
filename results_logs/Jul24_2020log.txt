@@ -1,7 +1,8 @@
-ALl Datasets located in: app/src/main/assets/
-Below Dataset: ISIS Image library locates in app/src/main/assets/isis (tengpeng's library)
-5 groups of objects, each ai#0 is the front view and all other ai#n images are the object twisted with certain angles will compare with the ai#0.
-
+ReadMe:
+	-All Datasets now are located in: app/src/main/assets/
+	-Below Dataset: ISIS Image library locates in app/src/main/assets/isis (tengpeng's library)
+	-5 groups of objects, each ai#0 is the front view and all other ai#n images are the object twisted with certain angles will compare with the ai#0.
+	-The time below are all tested on an android phone.
 
 I/System.out: -----------------
     Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai12.jpg to ai10.jpg are: 0.9583333333333334 and 0.7948717948717948 and 0.6088482737541199
@@ -34,7 +35,7 @@ I/System.out: -----------------
     MinHashing Similarity time14584
     weightedJaccard Similarity time1613542
 I/System.out: -----------------
-I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai16.jpg to ai10.jpg are: 0.875 and 0.8097826086956522 and 0.5483835339546204
+    Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai16.jpg to ai10.jpg are: 0.875 and 0.8097826086956522 and 0.5483835339546204
     RGBHashing time120326562
     minHashing time831771realJacard time37470833
     MinHashing Similarity time16146
@@ -140,13 +141,13 @@ I/System.out: -----------------
        MinHashing Similarity time17187
        weightedJaccard Similarity time2102083
    I/System.out: -----------------
-   I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai37.jpg to ai30.jpg are: 0.8333333333333334 and 0.8571428571428571 and 0.3679082691669464
+       Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai37.jpg to ai30.jpg are: 0.8333333333333334 and 0.8571428571428571 and 0.3679082691669464
        RGBHashing time490543229
        minHashing time575000realJacard time124709375
        MinHashing Similarity time21875
        weightedJaccard Similarity time1968750
    I/System.out: -----------------
-   I/System.out: Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai32.jpg to ai30.jpg are: 0.875 and 0.8760330578512396 and 0.39631086587905884
+       Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai32.jpg to ai30.jpg are: 0.875 and 0.8760330578512396 and 0.39631086587905884
        RGBHashing time523164063
        minHashing time492188realJacard time125004167
        MinHashing Similarity time22917
@@ -225,7 +226,7 @@ I/System.out: -----------------
     RGBHashing time136160417
     minHashing time88541realJacard time28951563
     MinHashing Similarity time6771
-I/System.out: weightedJaccard Similarity time366666
+    weightedJaccard Similarity time366666
 I/System.out: -----------------
     Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai48.jpg to ai40.jpg are: 0.875 and 0.8888888888888888 and 0.5760298371315002
     RGBHashing time107913542
@@ -284,7 +285,7 @@ I/System.out: -----------------
     minHashing time111458realJacard time63069271
     MinHashing Similarity time13021
     weightedJaccard Similarity time539583
-I/.colorhistogra: Wrote stack traces to tombstoned
+
 I/System.out: -----------------
     Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of ai52.jpg to ai50.jpg are: 0.75 and 0.7767857142857143 and 0.3835757076740265
     RGBHashing time158723959
