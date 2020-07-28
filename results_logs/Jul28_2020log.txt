@@ -3,7 +3,7 @@ ReadME:
 --1)Dataset = Isis library (dataset tengpeng sent) locates in app/src/main/assets/isis
 --2)5 groups of objects, each ai#0 is the front view and all other ai#n images are the object twisted with certain angles will compare with the ai#0.
 --3)Using the updated ImageData_MinHash with more properties for each pixel.
---4)Compare the MinHash similarity with July25 log(original ImageData_MinHash), same objects similarity dropped from around 0.9 to around 0.55.
+--4)Compare the MinHash similarity with July24 log(original ImageData_MinHash), same objects similarity dropped from around 0.9 to around 0.55.
 
 RESULTS:
 First Group of Objects (locates in app/src/main/assets/isis)
