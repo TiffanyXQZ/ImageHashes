@@ -1,0 +1,71 @@
+July 28 Result log:
+ReadME:
+--1)Dataset = Isis library (dataset tengpeng sent) locates in app/src/main/assets/isis
+--2)5 groups of objects, each ai#0 is the front view and all other ai#n images are the object twisted with certain angles will compare with the ai#0.
+--3)Using the updated ImageData_MinHash with more properties for each pixel.
+--4)Compare the MinHash similarity with July25 log(original ImageData_MinHash), same objects similarity dropped from around 0.9 to around 0.55.
+
+RESULTS:
+First Group of Objects (locates in app/src/main/assets/isis)
+I/System.out: ai12.jpg and ai10.jpg: 	minhash:0.625000, 	real Jaccad:0.631780,  	weighted Jaccard:0.581412	rgbHashing time: 110845089, 	minHashing time:   6031935, 	realJaccard time:  27822833,	minHashing similarity time:      5980, 	weighted Jaccard similarity time:  12469918
+I/System.out: ai18.jpg and ai10.jpg: 	minhash:0.583333, 	real Jaccad:0.621570,  	weighted Jaccard:0.638374	rgbHashing time:  83537788, 	minHashing time:   2441202, 	realJaccard time:  12606101,	minHashing similarity time:      4451, 	weighted Jaccard similarity time:   1073986
+I/System.out: ai11.jpg and ai10.jpg: 	minhash:0.625000, 	real Jaccad:0.649539,  	weighted Jaccard:0.629915	rgbHashing time: 391455601, 	minHashing time:    764045, 	realJaccard time:   9138940,	minHashing similarity time:      3953, 	weighted Jaccard similarity time:    324416
+I/System.out: ai15.jpg and ai10.jpg: 	minhash:0.666667, 	real Jaccad:0.580334,  	weighted Jaccard:0.498861	rgbHashing time: 103781432, 	minHashing time:   1210079, 	realJaccard time:   9129795,	minHashing similarity time:      4769, 	weighted Jaccard similarity time:    279355
+I/System.out: ai10.jpg and ai10.jpg: 	minhash:1.000000, 	real Jaccad:1.000000,  	weighted Jaccard:1.000000	rgbHashing time: 105847842, 	minHashing time:   1322050, 	realJaccard time:   9479110,	minHashing similarity time:      4812, 	weighted Jaccard similarity time:    351694
+I/System.out: ai16.jpg and ai10.jpg: 	minhash:0.666667, 	real Jaccad:0.585289,  	weighted Jaccard:0.528052	rgbHashing time: 125382184, 	minHashing time:   1768021, 	realJaccard time:  10944011,	minHashing similarity time:      7574, 	weighted Jaccard similarity time:    648654
+I/System.out: ai14.jpg and ai10.jpg: 	minhash:0.666667, 	real Jaccad:0.546626,  	weighted Jaccard:0.464716	rgbHashing time: 122981016, 	minHashing time:   1006031, 	realJaccard time:  12291190,	minHashing similarity time:      7134, 	weighted Jaccard similarity time:    634214
+I/System.out: ai17.jpg and ai10.jpg: 	minhash:0.708333, 	real Jaccad:0.628405,  	weighted Jaccard:0.580778	rgbHashing time: 134526186, 	minHashing time:    906891, 	realJaccard time:  15853350,	minHashing similarity time:      4864, 	weighted Jaccard similarity time:   1529839
+I/System.out: ai13.jpg and ai10.jpg: 	minhash:0.583333, 	real Jaccad:0.566871,  	weighted Jaccard:0.520874	rgbHashing time: 160855774, 	minHashing time:   1452870, 	realJaccard time:  14840925,	minHashing similarit
+
+
+
+
+Second Group of Objects (locates in app/src/main/assets/isis)
+I/System.out: ai26.png and ai20.png: 	minhash:0.583333, 	real Jaccad:0.528048,  	weighted Jaccard:0.434946	rgbHashing time: 472946282, 	minHashing time:  11138590, 	realJaccard time:  58056249,	minHashing similarity time:      6205, 	weighted Jaccard similarity time:  20539697
+I/System.out: ai22.png and ai20.png: 	minhash:0.583333, 	real Jaccad:0.559819,  	weighted Jaccard:0.455213	rgbHashing time: 373359920, 	minHashing time:   3157262, 	realJaccard time:  46264462,	minHashing similarity time:      5922, 	weighted Jaccard similarity time:   1110447
+I/System.out: ai23.png and ai20.png: 	minhash:0.666667, 	real Jaccad:0.547297,  	weighted Jaccard:0.448555	rgbHashing time: 899559896, 	minHashing time:   2840738, 	realJaccard time:  54704796,	minHashing similarity time:      7581, 	weighted Jaccard similarity time:   2407133
+I/System.out: ai28.png and ai20.png: 	minhash:0.708333, 	real Jaccad:0.508015,  	weighted Jaccard:0.396770	rgbHashing time: 446052720, 	minHashing time:   2170044, 	realJaccard time:  52939716,	minHashing similarity time:      7212, 	weighted Jaccard similarity time:   2070782
+I/System.out: ai27.png and ai20.png: 	minhash:0.541667, 	real Jaccad:0.521402,  	weighted Jaccard:0.413301	rgbHashing time:1001459915, 	minHashing time:   1572561, 	realJaccard time:  29516570,	minHashing similarity time:      6510, 	weighted Jaccard similarity time:   1303997
+I/System.out: ai24.png and ai20.png: 	minhash:0.666667, 	real Jaccad:0.547898,  	weighted Jaccard:0.440046	rgbHashing time: 665036994, 	minHashing time:   2728665, 	realJaccard time:  34010908,	minHashing similarity time:      5197, 	weighted Jaccard similarity time:    872893
+I/System.out: ai20.png and ai20.png: 	minhash:1.000000, 	real Jaccad:1.000000,  	weighted Jaccard:1.000000	rgbHashing time: 197946104, 	minHashing time:   1904510, 	realJaccard time:  24960389,	minHashing similarity time:      4266, 	weighted Jaccard similarity time:    702594
+I/System.out: ai25.png and ai20.png: 	minhash:0.625000, 	real Jaccad:0.552918,  	weighted Jaccard:0.453848	rgbHashing time: 563591183, 	minHashing time:   1584525, 	realJaccard time:  41441967,	minHashing similarity time:      6839, 	weighted Jaccard similarity time:   1096677
+I/System.out: ai21.png and ai20.png: 	minhash:0.625000, 	real Jaccad:0.574359,  	weighted Jaccard:0.463684	rgbHashing time: 521728768, 	minHashing time:   2741483, 	realJaccard time:  35130173,	minHashing similarity time:      4963, 	weighted Jaccard similarity time:   1911846
+
+
+
+Third Group of Objects (locates in app/src/main/assets/isis)
+I/System.out: ai34.jpg and ai30.jpg: 	minhash:0.791667, 	real Jaccad:0.734394,  	weighted Jaccard:0.371978	rgbHashing time: 342558131, 	minHashing time:   3310590, 	realJaccard time:  46645954,	minHashing similarity time:     18427, 	weighted Jaccard similarity time:   7565610
+I/System.out: ai33.jpg and ai30.jpg: 	minhash:0.708333, 	real Jaccad:0.731707,  	weighted Jaccard:0.376868	rgbHashing time: 473784692, 	minHashing time:   7114288, 	realJaccard time:  45307829,	minHashing similarity time:      5962, 	weighted Jaccard similarity time:   2042347
+I/System.out: ai37.jpg and ai30.jpg: 	minhash:0.750000, 	real Jaccad:0.712010,  	weighted Jaccard:0.359195	rgbHashing time: 496885113, 	minHashing time:   2113251, 	realJaccard time:  51567139,	minHashing similarity time:      6468, 	weighted Jaccard similarity time:    355113
+I/System.out: ai32.jpg and ai30.jpg: 	minhash:0.750000, 	real Jaccad:0.736973,  	weighted Jaccard:0.384597	rgbHashing time: 460563764, 	minHashing time:    748535, 	realJaccard time:  53137514,	minHashing similarity time:      6147, 	weighted Jaccard similarity time:    312012
+I/System.out: ai36.jpg and ai30.jpg: 	minhash:0.625000, 	real Jaccad:0.709717,  	weighted Jaccard:0.349159	rgbHashing time: 673934644, 	minHashing time:    390177, 	realJaccard time:  56173442,	minHashing similarity time:      6216, 	weighted Jaccard similarity time:    617135
+I/System.out: ai31.jpg and ai30.jpg: 	minhash:0.750000, 	real Jaccad:0.746394,  	weighted Jaccard:0.402737	rgbHashing time: 420238117, 	minHashing time:    454424, 	realJaccard time:  54064296,	minHashing similarity time:      9512, 	weighted Jaccard similarity time:    618632
+I/System.out: ai38.jpg and ai30.jpg: 	minhash:0.791667, 	real Jaccad:0.718482,  	weighted Jaccard:0.364618	rgbHashing time: 809773500, 	minHashing time:    493995, 	realJaccard time:  51817458,	minHashing similarity time:      5120, 	weighted Jaccard similarity time:    297989
+I/System.out: ai35.jpg and ai30.jpg: 	minhash:0.750000, 	real Jaccad:0.732843,  	weighted Jaccard:0.348854	rgbHashing time: 499900442, 	minHashing time:    727813, 	realJaccard time:  50240120,	minHashing similarity time:      6307, 	weighted Jaccard similarity time:    556712
+I/System.out: ai30.jpg and ai30.jpg: 	minhash:1.000000, 	real Jaccad:1.000000,  	weighted Jaccard:1.000000	rgbHashing time: 250662272, 	minHashing time:    952435, 	realJaccard time:  32584381,	minHashing similarity time:      6064, 	weighted Jaccard similarity time:    349005
+
+
+
+Fourth Group of Objects (locates in app/src/main/assets/isis)
+I/System.out: ai47.jpg and ai40.jpg: 	minhash:0.833333, 	real Jaccad:0.778302,  	weighted Jaccard:0.541495	rgbHashing time: 334992617, 	minHashing time:   6563517, 	realJaccard time:  32443910,	minHashing similarity time:      4578, 	weighted Jaccard similarity time:   6487488
+I/System.out: ai42.jpg and ai40.jpg: 	minhash:0.791667, 	real Jaccad:0.727964,  	weighted Jaccard:0.477622	rgbHashing time: 396931526, 	minHashing time:    774815, 	realJaccard time:  27593559,	minHashing similarity time:      4463, 	weighted Jaccard similarity time:   1144924
+I/System.out: ai41.jpg and ai40.jpg: 	minhash:0.791667, 	real Jaccad:0.750383,  	weighted Jaccard:0.524658	rgbHashing time: 381918182, 	minHashing time:    732458, 	realJaccard time:  29516537,	minHashing similarity time:      5023, 	weighted Jaccard similarity time:    191749
+I/System.out: ai40.jpg and ai40.jpg: 	minhash:1.000000, 	real Jaccad:1.000000,  	weighted Jaccard:1.000000	rgbHashing time: 311074488, 	minHashing time:    751902, 	realJaccard time:  40942097,	minHashing similarity time:      5856, 	weighted Jaccard similarity time:    417681
+I/System.out: ai45.jpg and ai40.jpg: 	minhash:0.791667, 	real Jaccad:0.742331,  	weighted Jaccard:0.487069	rgbHashing time: 358897819, 	minHashing time:    333611, 	realJaccard time: 228814264,	minHashing similarity time:     75377, 	weighted Jaccard similarity time:   3488496
+I/System.out: ai44.jpg and ai40.jpg: 	minhash:0.833333, 	real Jaccad:0.740000,  	weighted Jaccard:0.449704	rgbHashing time: 396213381, 	minHashing time:    843378, 	realJaccard time:  93899420,	minHashing similarity time:     15824, 	weighted Jaccard similarity time:    299856
+I/System.out: ai48.jpg and ai40.jpg: 	minhash:0.791667, 	real Jaccad:0.758308,  	weighted Jaccard:0.565633	rgbHashing time: 355570212, 	minHashing time:    394452, 	realJaccard time:  36702760,	minHashing similarity time:      3959, 	weighted Jaccard similarity time:    176556
+I/System.out: ai43.jpg and ai40.jpg: 	minhash:0.750000, 	real Jaccad:0.716418,  	weighted Jaccard:0.440383	rgbHashing time: 389518931, 	minHashing time:    376584, 	realJaccard time:  49855561,	minHashing similarity time:      4872, 	weighted Jaccard similarity time:    275911
+
+
+
+Fifth Group of Objects (locates in app/src/main/assets/isis)
+I/System.out: ai55.jpg and ai50.jpg: 	minhash:0.541667, 	real Jaccad:0.533197,  	weighted Jaccard:0.137840	rgbHashing time:1178488800, 	minHashing time:   3239462, 	realJaccard time:  62547040,	minHashing similarity time:      5090, 	weighted Jaccard similarity time:   9009018
+I/System.out: ai51.jpg and ai50.jpg: 	minhash:0.708333, 	real Jaccad:0.718377,  	weighted Jaccard:0.664007	rgbHashing time: 524904986, 	minHashing time:  14285281, 	realJaccard time:  50903632,	minHashing similarity time:      4588, 	weighted Jaccard similarity time:   2548698
+I/System.out: ai50.jpg and ai50.jpg: 	minhash:1.000000, 	real Jaccad:1.000000,  	weighted Jaccard:1.000000	rgbHashing time: 921579205, 	minHashing time:    881728, 	realJaccard time:  52500210,	minHashing similarity time:      4742, 	weighted Jaccard similarity time:    200319
+I/System.out: ai54.jpg and ai50.jpg: 	minhash:0.416667, 	real Jaccad:0.518256,  	weighted Jaccard:0.217447	rgbHashing time: 567461697, 	minHashing time:    594901, 	realJaccard time: 403819115,	minHashing similarity time:    295587, 	weighted Jaccard similarity time:   7185963
+I/System.out: ai58.jpg and ai50.jpg: 	minhash:0.708333, 	real Jaccad:0.689095,  	weighted Jaccard:0.558594	rgbHashing time: 522716547, 	minHashing time:   2654171, 	realJaccard time:  85191726,	minHashing similarity time:     18709, 	weighted Jaccard similarity time:    483020
+I/System.out: ai53.jpg and ai50.jpg: 	minhash:0.500000, 	real Jaccad:0.583603,  	weighted Jaccard:0.230992	rgbHashing time: 555609014, 	minHashing time:    591942, 	realJaccard time: 118960952,	minHashing similarity time:      4442, 	weighted Jaccard similarity time:    180970
+I/System.out: ai52.jpg and ai50.jpg: 	minhash:0.625000, 	real Jaccad:0.650630,  	weighted Jaccard:0.363865	rgbHashing time:1042850221, 	minHashing time:    481650, 	realJaccard time:  82515354,	minHashing similarity time:      4863, 	weighted Jaccard similarity time:    212565
+I/System.out: ai57.jpg and ai50.jpg: 	minhash:0.625000, 	real Jaccad:0.578623,  	weighted Jaccard:0.195376	rgbHashing time:1067387418, 	minHashing time:    508086, 	realJaccard time: 113374078,	minHashing similarity time:      6633, 	weighted Jaccard similarity time:    307690
+I/System.out: ai56.jpg and ai50.jpg: 	minhash:0.416667, 	real Jaccad:0.491850,  	weighted Jaccard:0.121373	rgbHashing time: 670494371, 	minHashing time:    572776, 	realJaccard time: 110020139,	minHashing similarity time:      5974, 	weighted Jaccard similarity time:    314656
+

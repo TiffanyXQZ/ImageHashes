@@ -235,11 +235,14 @@ public class MainActivity extends AppCompatActivity {
 //                System.out.println(log);
 
 
-                System.out.printf("%s and %s: \tminhash:%04f, \treal Jaccad:%04f,  \tweighted Jaccard:%04f\n",
+                System.out.printf("%s and %s: \tminhash:%04f, \treal Jaccad:%04f,  \tweighted Jaccard:%04f" +
+                                "\trgbHashing time:%10d, \tminHashing time:%10d, " +
+                                "\trealJaccard time:%10d,\tminHashing similarity time:%10d, \tweighted Jaccard similarity time:%10d  \n",
                         imageData.getName(),name,
                         minhash.similarity(imData_List.get(index).getMin_hash(), imageData.getMin_hash()),
                         minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash()),
-                        WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()) );
+                        WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()),
+                        imageData.getTime_rgbhashing(),imageData.getTime_minhashing(),realJacTime,mHTime,wHTime);
 
                 try {
 
@@ -274,6 +277,7 @@ public class MainActivity extends AppCompatActivity {
 
                     InputStream inIm = getResources().getAssets().open(path + '/' + file);
 
+
                     Bitmap bitmap = BitmapFactory.decodeStream(inIm);
                     System.out.println(bitmap.getHeight());
                     images.put(file, bitmap);
@@ -291,12 +295,9 @@ public class MainActivity extends AppCompatActivity {
         Field[] drawablesFields = R.drawable.class.getFields();
         for (int i = 0; i < drawablesFields.length; i++) {
             String name = drawablesFields[i].getName();
+
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inSampleSize=4;
-
-
-
-
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), drawablesFields[i].getInt(null),options);
             if (!name.startsWith("a1") || name.startsWith("ab")) continue;
             images.put(name, bmp);
