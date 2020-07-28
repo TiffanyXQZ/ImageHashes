@@ -68,7 +68,10 @@ public class ImageData_MinHash {
         int calHash(){
             int ret=0, base=1;
             for(PixelProperty p : pList){
-                ret+=p.getIdx(col)*base;
+                int idx=0;
+                if(p instanceof ColorProperty) idx=p.getIdx(col);
+                else if(p instanceof NeighborProperty) idx=p.getIdx(this);
+                ret+=idx*base;
                 base*=p.getRange();
             }
             // if((x<10)&&(y<10)) System.out.printf("%d,%d: %d\t%d\n", x,y,ret, calHash1(num));
@@ -126,10 +129,10 @@ public class ImageData_MinHash {
         }
     }
 
-    private class neighborRProperty implements PixelProperty{
+    private abstract class NeighborProperty implements PixelProperty{
         String name;
         int min, max, num=-1;
-        neighborRProperty(String name, int min, int max, int num){
+        NeighborProperty(String name, int min, int max, int num){
             this.name=name;this.min=min;this.max=max; this.num=num;
         }
         public int getRange(){
@@ -139,6 +142,20 @@ public class ImageData_MinHash {
         public int getIdx(Object... arg){ //int val, int num
             Pixel p=(Pixel)arg[0];
             int x=p.getX(), y=p.getY();
+            return getVal(x,y);
+        }
+        abstract int getVal(int x, int y);
+    }
+    private class neighborRProperty extends NeighborProperty{
+        neighborRProperty(String name, int min, int max, int num){
+            super(name,min,max,num);
+            //this.name=name;this.min=min;this.max=max; this.num=num;
+        }
+
+        //public int getIdx(Object... arg){ //int val, int num
+        //    Pixel p=(Pixel)arg[0];
+        //    int x=p.getX(), y=p.getY();
+        int getVal(int x, int y){
             int sum=0, count=0;
             if(x>0){
                 sum+=Color.red(pixel_objs[x-1][y].getColor());
@@ -162,6 +179,65 @@ public class ImageData_MinHash {
         }
     }
 
+
+    private class neighborGProperty extends NeighborProperty{
+        neighborGProperty(String name, int min, int max, int num){
+            super(name,min,max,num);
+            //this.name=name;this.min=min;this.max=max; this.num=num;
+        }
+        public int getVal(int x, int y){
+            int sum=0, count=0;
+            if(x>0){
+                sum+=Color.green(pixel_objs[x-1][y].getColor());
+                count++;
+            }
+            if(x<pixel_objs.length-1){
+                sum+=Color.green(pixel_objs[x+1][y].getColor());
+                count++;
+            }
+            if(y>0){
+                sum+=Color.green(pixel_objs[x][y-1].getColor());
+                count++;
+            }
+            if(y<pixel_objs[0].length-1){
+                sum+=Color.green(pixel_objs[x][y+1].getColor());
+                count++;
+            }
+            int val=(int)Math.round((float)sum/count);
+            int w=(int)Math.ceil((float)256/num);
+            return (val-min)/w;
+        }
+    }
+
+    private class neighborBProperty extends NeighborProperty{
+        neighborBProperty(String name, int min, int max, int num){
+            super(name,min,max,num);
+            //this.name=name;this.min=min;this.max=max; this.num=num;
+        }
+        public int getVal(int x, int y){
+            int sum=0, count=0;
+            if(x>0){
+                sum+=Color.blue(pixel_objs[x-1][y].getColor());
+                count++;
+            }
+            if(x<pixel_objs.length-1){
+                sum+=Color.blue(pixel_objs[x+1][y].getColor());
+                count++;
+            }
+            if(y>0){
+                sum+=Color.blue(pixel_objs[x][y-1].getColor());
+                count++;
+            }
+            if(y<pixel_objs[0].length-1){
+                sum+=Color.blue(pixel_objs[x][y+1].getColor());
+                count++;
+            }
+            int val=(int)Math.round((float)sum/count);
+            int w=(int)Math.ceil((float)256/num);
+            return (val-min)/w;
+        }
+    }
+
     /*
     public ImageData_MinHash(String name,Bitmap bitmap, int num) {
         this.name = name;
@@ -177,6 +253,10 @@ public class ImageData_MinHash {
         pList.add(new gProperty("blue",0,255, num));
         pList.add(new bProperty("green",0,255, num));
         pList.add(new rProperty("red",0,255,num));
+        pList.add(new neighborRProperty("neighbor_r",0,255,num));
+        pList.add(new neighborGProperty("neighbor_g",0,255,num));
+        pList.add(new neighborBProperty("neighbor_b",0,255,num));
+
         //pList.add(new rProperty("neight_red",0,255,num)); //test another property
     }
 
@@ -240,9 +320,9 @@ public class ImageData_MinHash {
                 else  pixels_Hash[i+j*width] = pobj.calHash();
             }
 
-        System.out.printf("%s: before %d\t",name, pixels_Hash.length);
+        //System.out.printf("%s: before %d\t",name, pixels_Hash.length);
         pixels_Hash = removeNegativeValue(pixels_Hash);
-        System.out.printf("after %d\n",pixels_Hash.length);
+        //System.out.printf("after %d\n",pixels_Hash.length);
 
         this.pixel_hash = pixels_Hash;
         endTime = System.nanoTime();

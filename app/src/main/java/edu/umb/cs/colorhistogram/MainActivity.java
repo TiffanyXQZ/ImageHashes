@@ -221,10 +221,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                String log = "-----------------\n" + "Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of " + imageData.getName()
+                String log = "-----------------\n" +
+                        "Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of " + imageData.getName()
                         + " to " + name + " are: " + minHashSimi + " and " +  realJaccard + " and " +weiSim  + "\n"+
-
-
                         "RGBHashing time" + imageData.getTime_rgbhashing() +"\n"+
                                 "minHashing time" + imageData.getTime_minhashing() +
 
@@ -233,8 +232,14 @@ public class MainActivity extends AppCompatActivity {
                         "weightedJaccard Similarity time" + wHTime
 
                         ;
-                System.out.println(log);
+//                System.out.println(log);
 
+
+                System.out.printf("%s and %s: \tminhash:%04f, \treal Jaccad:%04f,  \tweighted Jaccard:%04f\n",
+                        imageData.getName(),name,
+                        minhash.similarity(imData_List.get(index).getMin_hash(), imageData.getMin_hash()),
+                        minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash()),
+                        WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()) );
 
                 try {
 
@@ -286,7 +291,13 @@ public class MainActivity extends AppCompatActivity {
         Field[] drawablesFields = R.drawable.class.getFields();
         for (int i = 0; i < drawablesFields.length; i++) {
             String name = drawablesFields[i].getName();
-            Bitmap bmp = BitmapFactory.decodeResource(getResources(), drawablesFields[i].getInt(null));
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize=4;
+
+
+
+
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), drawablesFields[i].getInt(null),options);
             if (!name.startsWith("a1") || name.startsWith("ab")) continue;
             images.put(name, bmp);
         }
