@@ -7,6 +7,7 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -235,14 +236,20 @@ public class MainActivity extends AppCompatActivity {
 //                System.out.println(log);
 
 
-                System.out.printf("%s and %s: \tminhash:%04f, \treal Jaccad:%04f,  \tweighted Jaccard:%04f" +
-                                "\trgbHashing time:%10d, \tminHashing time:%10d, " +
-                                "\trealJaccard time:%10d,\tminHashing similarity time:%10d, \tweighted Jaccard similarity time:%10d  \n",
+                String str=String.format("\n\n%s and %s: " +
+                                "\nsimilarity:\n" +
+                                "\tminhash:\t\t\t%4.3f\n \treal Jaccad:\t\t%4.3f\n \tweighted Jaccard:\t%4.3f" +
+                                "\ntime: \n" +
+                                "\trgbHashing time:\t%8d ms\n \tminHashing time:\t%8d ms\n" +
+                                "\trealJaccard time:\t%8d ms\n \tminHashing similarity time:\t%8d ms\n \tweighted Jaccard similarity time:\t%8d ms\n",
                         imageData.getName(),name,
                         minhash.similarity(imData_List.get(index).getMin_hash(), imageData.getMin_hash()),
                         minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash()),
                         WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()),
-                        imageData.getTime_rgbhashing(),imageData.getTime_minhashing(),realJacTime,mHTime,wHTime);
+                        imageData.getTime_rgbhashing()/1000,imageData.getTime_minhashing()/1000,realJacTime/1000,mHTime/1000,wHTime/1000);
+
+                //System.out.println(str);
+                Log.i("MyTag",str);
 
                 try {
 
@@ -277,8 +284,9 @@ public class MainActivity extends AppCompatActivity {
 
                     InputStream inIm = getResources().getAssets().open(path + '/' + file);
 
-
-                    Bitmap bitmap = BitmapFactory.decodeStream(inIm);
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inSampleSize=3;
+                    Bitmap bitmap = BitmapFactory.decodeStream(inIm,null, options);
                     System.out.println(bitmap.getHeight());
                     images.put(file, bitmap);
 //                    inIm.close();
