@@ -3,7 +3,6 @@ package edu.umb.cs.colorhistogram;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -22,13 +21,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import edu.umb.cs.lsh.MyMinHash;
 import edu.umb.cs.lsh.WeightedJaccard;
@@ -37,6 +35,14 @@ public class MainActivity extends AppCompatActivity {
 
     private MyAdapter adapt;
     private HashMap<String, Bitmap> images = new HashMap<>();
+    private TreeMap<String, ArrayList<String>> imageGroup = new TreeMap<>();
+
+    private HashMap<String, Integer> name2idx = new HashMap<>();
+    private ArrayList<String> inames = new ArrayList<>(5);
+    // index for each image in listview
+    private TreeMap<String, ArrayList<Integer>> groupIndex = new TreeMap<>();
+
+
 
 
     private List<ImageData_MinHash> imData_List = new ArrayList<>();
@@ -45,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Integer> imsID = new ArrayList<>();
     private HashMap<String, Integer> origin_file = new HashMap<String, Integer>();
-    int index = 0;// image index to be compared
     int num = 10;//num: number of buckets for RGB to integers.
     int seed = 2020;
     long duration, startTime, endTime;
@@ -59,46 +64,25 @@ public class MainActivity extends AppCompatActivity {
 
         loadImageFromAssets();
 
+/*
 
-//        try {
-//            loadImageData();
-//        } catch (IllegalAccessException e) {
-//            e.printStackTrace();
-//        }
-
-
-//<<<<<<< HEAD
-//        if (!OpenCVLoader.initDebug()) {
-//            OpenCVLoader.initDebug();
-//        }
-//=======
-//        System.out.println(drawablesFields.length);
-////       if (!OpenCVLoader.initDebug()) {
-////            OpenCVLoader.initDebug();
-////        }
-//>>>>>>> fe2e785adb4bc38e391c1e2ca8bea08ae943921f
-
-
-        String originfiles[] = {"ai10.jpg","ai20.png","ai30.jpg","ai40.jpg","ai50.jpg"};
+        String originfiles[] = {"ai10.jpg", "ai20.png", "ai30.jpg", "ai40.jpg", "ai50.jpg"};
 
         String originfile;// = originfiles[4];
         //origin_file.put(originfile, -1);
         int j = 0;
 
-        for (int i=0;i<originfiles.length;i++) {
 
-            originfile=originfiles[i];
+        for (int i = 0; i < originfiles.length; i++) {
+
+            originfile = originfiles[i];
             origin_file.put(originfile, -1);
 
             for (String name : images.keySet()) {
 
                 Bitmap bmp = images.get(name);
-
-                //System.out.println();
                 if (!name.startsWith(originfile.substring(0, 3))) continue;
                 boolean isOrigin = (origin_file.containsKey(name)); //check if it's the online (origin) image
-
-                //System.out.println(name);
 
                 ImageData imageData = new ImageData(bmp);
                 bitmaps.add(bmp);
@@ -115,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 //            if (j >= 25) break;
 
             }
-        }
+        }*/
 
         new Thread() {
             public void run() {
@@ -202,72 +186,51 @@ public class MainActivity extends AppCompatActivity {
 //     Print Weighted Jaccard similarity between each image to a00000.jpg
         //System.out.println("hello from print");
 
-        for (String name : origin_file.keySet()) {
-            int index = origin_file.get(name);
-            //System.out.println(name);
-            //System.out.println(index );
-            if (index == -1) continue;
-            System.out.println(imData_List.size());
+        for (String baseImage : imageGroup.keySet()) {
+            int baseIdx = name2idx.get(baseImage);
+            for (String im  : imageGroup.get(baseImage)) {
 
+                ImageData_MinHash imageData = imData_List.get(name2idx.get(im));
 
-//            System.out.println(Arrays.toString(name.split("\\.")));
-//            String path = "/home/haoyu/projects/ImageHashes/Data/data/" + name.split("\\.")[0] + ".txt";
-
-            String path = name.split("\\.")[0] + ".txt";
-            for (ImageData_MinHash imageData : imData_List) {
 
                 startTime = System.nanoTime();
-                double realJaccard =  minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash());
+                double realJaccard = minhash.jaccard(imData_List.get(baseIdx).getPixel_hash(), imageData.getPixel_hash());
                 long realJacTime = System.nanoTime() - startTime;
 
                 startTime = System.nanoTime();
-                double minHashSimi =   minhash.similarity(imData_List.get(index).getMin_hash(), imageData.getMin_hash()) ;
+                double minHashSimi = minhash.similarity(imData_List.get(baseIdx).getMin_hash(), imageData.getMin_hash());
                 long mHTime = System.nanoTime() - startTime;
 
 
                 startTime = System.nanoTime();
-                double weiSim =   WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()) ;
+                double weiSim = WeightedJaccard.similarity(imData_List.get(baseIdx).getColor_hist(), imageData.getColor_hist());
                 long wHTime = System.nanoTime() - startTime;
 
 
 
-                String log = "-----------------\n" +
-                        "Minhash similarity, real Jaccad similarity and weighted Jaccard similarity of " + imageData.getName()
-                        + " to " + name + " are: " + minHashSimi + " and " +  realJaccard + " and " +weiSim  + "\n"+
-                        "RGBHashing time" + imageData.getTime_rgbhashing() +"\n"+
-                                "minHashing time" + imageData.getTime_minhashing() +
-
-                                "realJacard time" + realJacTime +"\n"+
-                "MinHashing Similarity time" + mHTime +"\n"+
-                        "weightedJaccard Similarity time" + wHTime
-
-                        ;
-//                System.out.println(log);
-
-
-                String str=String.format("\n\n%s and %s: " +
+                String str = String.format("\n\n%s and %s: " +
                                 "\nsimilarity:\n" +
                                 "\t%-20s\t%4.3f\n \t%-20s\t%4.3f\n \t%-20s\t%4.3f" +
                                 "\ntime: \n" +
                                 "\t%-40s\t%8d ms\n \t%-40s\t%8d ms\n" +
                                 "\t%-40s\t%8d ms\n \t%-40s\t%8d ms\n \t%-40s\t%8d ms\n",
-                        imageData.getName(),name,
+                        imageData.getName(), baseImage,
                         "minhash:",
-                        minhash.similarity(imData_List.get(index).getMin_hash(), imageData.getMin_hash()),
+                        minhash.similarity(imData_List.get(baseIdx).getMin_hash(), imageData.getMin_hash()),
                         "real Jaccad:",
-                        minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash()),
+                        minhash.jaccard(imData_List.get(baseIdx).getPixel_hash(), imageData.getPixel_hash()),
                         "weighted Jaccard:",
-                        WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()),
-                        "rgbHashing time:", imageData.getTime_rgbhashing()/1000,
-                        "minHashing time:", imageData.getTime_minhashing()/1000,
-                        "realJaccard time:", realJacTime/1000,
-                        "minHashing similarity time:", mHTime/1000,
-                        "weighted Jaccard similarity time:",wHTime/1000);
+                        WeightedJaccard.similarity(imData_List.get(baseIdx).getColor_hist(), imageData.getColor_hist()),
+                        "rgbHashing time:", imageData.getTime_rgbhashing() / 1000,
+                        "minHashing time:", imageData.getTime_minhashing() / 1000,
+                        "realJaccard time:", realJacTime / 1000,
+                        "minHashing similarity time:", mHTime / 1000,
+                        "weighted Jaccard similarity time:", wHTime / 1000);
 
                 //System.out.println(str);
-                Log.i("MyTag",str);
+                Log.i("MyTag", str);
 
-                try {
+/*                try {
 
                     FileOutputStream fOut = openFileOutput(path, MODE_APPEND);
 //                    System.out.println(fOut.getFD().toString());
@@ -278,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } catch (IOException e) {
 
-                }
+                }*/
 
 
             }
@@ -287,31 +250,75 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void loadImageFromAssets() {
-        System.out.println("hell");
-        String[] list;
-        String path = "isis";
-        try {
-            list = getAssets().list(path);
-//            System.out.println(list.length);
-            if (list.length > 0) {
-                // This is a folder
-                for (String file : list) {
-//                    System.out.println(file);
 
-                    InputStream inIm = getResources().getAssets().open(path + '/' + file);
-
-                    BitmapFactory.Options options = new BitmapFactory.Options();
-                    options.inSampleSize=3;
-                    Bitmap bitmap = BitmapFactory.decodeStream(inIm,null, options);
-                    System.out.println(bitmap.getHeight());
-                    images.put(file, bitmap);
-//                    inIm.close();
-
-                }
+//      Images Folders and their original files
+        Map<String, String[]> imLibs = new HashMap<String, String[]>() {
+            {
+                put("coil100", new String[]{"ac10.png", "ac20.png"});
+                put("isis", new String[]{"ai10.jpg", "ai20.jpg", "ai30.jpg", "ai40.jpg", "ai50.jpg"});
+                put("videoDataset", new String[]{"a01.bmp", "a11.bmp", "a21.bmp", "a31.bmp", "a41.bmp", "a51.bmp"
+                        , "a61.bmp", "a71.bmp", "a81.bmp"});
             }
-        } catch (IOException e) {
+        };
 
+        for (String path : imLibs.keySet()) {
+            for (String origina : imLibs.get(path)) {
+                imageGroup.put(origina, new ArrayList<>(5));
+            }
         }
+
+        int j=0;
+        for (String path : imLibs.keySet()) {
+
+            String[] list;
+            try {
+                list = getAssets().list(path);
+                System.out.println(path + " " + list.length);
+                if (list.length > 0) {
+                    // This is a folder
+                    for (String file : list) {
+
+                        if (path.equals("videoDataset")) {
+                            imageGroup.get(file.substring(0, 2) + "1.bmp").add(file);
+
+                        } else if (path.equals("isis")) {
+                            imageGroup.get(file.substring(0, 3) + "0.jpg").add(file);
+                        } else {
+                            imageGroup.get(file.substring(0, 3) + "0.png").add(file);
+                        }
+
+
+                        InputStream inIm = getResources().getAssets().open(path + '/' + file);
+
+                        BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inSampleSize = 3;
+                        Bitmap bitmap = BitmapFactory.decodeStream(inIm, null, options);
+
+                        images.put(file, bitmap);
+                        bitmaps.add(bitmap);
+                        ImageData imageData = new ImageData(bitmap);
+                        Bitmap img = imageData.getCroppedBitmap(); //crop every picture for the library
+                        crop_bitmaps.add(img);
+
+
+                        boolean isOrigin = imageGroup.containsKey(file);
+                        ImageData_MinHash imdata = new ImageData_MinHash(file, img, num, minhash, isOrigin);
+                        imData_List.add(imdata);
+                        name2idx.put(file, j);
+                        j++;
+
+
+                    }
+                }
+            } catch (IOException e) {
+
+            }
+        }
+
+//        for (String or : imageGroup.keySet())
+//        {
+//            System.out.println(Arrays.toString(imageGroup.get(or).toArray()));
+//        }
     }
 
 
@@ -321,8 +328,8 @@ public class MainActivity extends AppCompatActivity {
             String name = drawablesFields[i].getName();
 
             BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inSampleSize=4;
-            Bitmap bmp = BitmapFactory.decodeResource(getResources(), drawablesFields[i].getInt(null),options);
+            options.inSampleSize = 4;
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), drawablesFields[i].getInt(null), options);
             if (!name.startsWith("a1") || name.startsWith("ab")) continue;
             images.put(name, bmp);
         }
