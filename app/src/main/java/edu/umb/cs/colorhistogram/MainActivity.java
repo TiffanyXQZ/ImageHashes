@@ -27,6 +27,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import edu.umb.cs.lsh.MyMinHash;
@@ -80,39 +81,47 @@ public class MainActivity extends AppCompatActivity {
 
         String originfiles[] = {"ai10.jpg","ai20.png","ai30.jpg","ai40.jpg","ai50.jpg"};
 
-        String originfile = originfiles[4];
-        origin_file.put(originfile, -1);
+        String originfile;// = originfiles[4];
+        //origin_file.put(originfile, -1);
         int j = 0;
 
-        for (String name : images.keySet()) {
+        for (int i=0;i<originfiles.length;i++) {
 
-            Bitmap bmp = images.get(name);
+            originfile=originfiles[i];
+            origin_file.put(originfile, -1);
 
+            for (String name : images.keySet()) {
 
+                Bitmap bmp = images.get(name);
 
-            System.out.println();
-            if (!name.startsWith(originfile.substring(0,3))) continue;
-            boolean isOrigin = (origin_file.containsKey(name)); //check if it's the online (origin) image
+                //System.out.println();
+                if (!name.startsWith(originfile.substring(0, 3))) continue;
+                boolean isOrigin = (origin_file.containsKey(name)); //check if it's the online (origin) image
 
-            System.out.println(name);
+                //System.out.println(name);
 
-            ImageData imageData = new ImageData(bmp);
-            bitmaps.add(bmp);
-            crop_bitmaps.add(imageData.getCroppedBitmap());
+                ImageData imageData = new ImageData(bmp);
+                bitmaps.add(bmp);
+                crop_bitmaps.add(imageData.getCroppedBitmap());
 
-            Bitmap img = isOrigin ? imageData.getCroppedBitmap() : bmp; //only crop online image
+                //Bitmap img = isOrigin ? imageData.getCroppedBitmap() : bmp; //only crop online image
 
+                Bitmap img = imageData.getCroppedBitmap(); //crop every picture for the library
 
-            ImageData_MinHash imdata = new ImageData_MinHash(name, img, num, minhash, isOrigin);
-            imData_List.add(imdata);
-            if (isOrigin) origin_file.put(name, j);
-            j++;
+                ImageData_MinHash imdata = new ImageData_MinHash(name, img, num, minhash, isOrigin);
+                imData_List.add(imdata);
+                if (isOrigin) origin_file.put(name, j);
+                j++;
 //            if (j >= 25) break;
 
+            }
         }
 
-
-        print();
+        new Thread() {
+            public void run() {
+                print();
+            }
+        }.start();
 
 
         String[] infos = imageInfo(imData_List);
@@ -191,12 +200,12 @@ public class MainActivity extends AppCompatActivity {
 //     Print minhash similarity between each image to a00000.jpg
 //     Print Real Jaccard similarity between each image to a00000.jpg
 //     Print Weighted Jaccard similarity between each image to a00000.jpg
-        System.out.println("hello from print");
+        //System.out.println("hello from print");
 
         for (String name : origin_file.keySet()) {
             int index = origin_file.get(name);
-            System.out.println(name);
-            System.out.println(index );
+            //System.out.println(name);
+            //System.out.println(index );
             if (index == -1) continue;
             System.out.println(imData_List.size());
 
@@ -238,15 +247,22 @@ public class MainActivity extends AppCompatActivity {
 
                 String str=String.format("\n\n%s and %s: " +
                                 "\nsimilarity:\n" +
-                                "\tminhash:\t\t\t%4.3f\n \treal Jaccad:\t\t%4.3f\n \tweighted Jaccard:\t%4.3f" +
+                                "\t%-20s\t%4.3f\n \t%-20s\t%4.3f\n \t%-20s\t%4.3f" +
                                 "\ntime: \n" +
-                                "\trgbHashing time:\t%8d ms\n \tminHashing time:\t%8d ms\n" +
-                                "\trealJaccard time:\t%8d ms\n \tminHashing similarity time:\t%8d ms\n \tweighted Jaccard similarity time:\t%8d ms\n",
+                                "\t%-40s\t%8d ms\n \t%-40s\t%8d ms\n" +
+                                "\t%-40s\t%8d ms\n \t%-40s\t%8d ms\n \t%-40s\t%8d ms\n",
                         imageData.getName(),name,
+                        "minhash:",
                         minhash.similarity(imData_List.get(index).getMin_hash(), imageData.getMin_hash()),
+                        "real Jaccad:",
                         minhash.jaccard(imData_List.get(index).getPixel_hash(), imageData.getPixel_hash()),
+                        "weighted Jaccard:",
                         WeightedJaccard.similarity(imData_List.get(index).getColor_hist(), imageData.getColor_hist()),
-                        imageData.getTime_rgbhashing()/1000,imageData.getTime_minhashing()/1000,realJacTime/1000,mHTime/1000,wHTime/1000);
+                        "rgbHashing time:", imageData.getTime_rgbhashing()/1000,
+                        "minHashing time:", imageData.getTime_minhashing()/1000,
+                        "realJaccard time:", realJacTime/1000,
+                        "minHashing similarity time:", mHTime/1000,
+                        "weighted Jaccard similarity time:",wHTime/1000);
 
                 //System.out.println(str);
                 Log.i("MyTag",str);
