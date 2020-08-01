@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         loadImageFromAssets();
 
 /*
@@ -184,15 +183,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void print() {
-        //     Consider all colors
-//     Print minhash similarity between each image to a00000.jpg
-//     Print Real Jaccard similarity between each image to a00000.jpg
-//     Print Weighted Jaccard similarity between each image to a00000.jpg
-        //System.out.println("hello from print");
 
 
-
-        String[] baseImages = imLibs.get("isis");
+        String[] baseImages = imLibs.get("videoDataset"); // Change library to switch
         for (String baseImage : baseImages) {
             int baseIdx = name2idx.get(baseImage);
             for (String im  : imageGroup.get(baseImage)) {

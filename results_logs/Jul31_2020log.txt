@@ -1,0 +1,1453 @@
+Now the MainActivity load all dataset from folder "asset".
+The cropped image samples can be found in the cropResultSamples.docx
+To print specific library dataset change the library name on line 188 String[] baseImages = imLibs.get("isis");
+3 libraries so far: coil100, isis, videoDataset
+
+
+*****************************************************************************************************************
+*****************************************************************************************************************
+isis library: (original images: ai10, ai20, ai30, ai40, ai50)
+*****************************************************************************************************************
+*****************************************************************************************************************
+I/MyTag: ai10.jpg and ai10.jpg: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	   36763 ms
+     	minHashing time:                        	    6017 ms
+    	realJaccard time:                       	   23420 ms
+     	minHashing similarity time:             	      44 ms
+     	weighted Jaccard similarity time:       	   38545 ms
+
+
+I/MyTag: ai11.jpg and ai10.jpg: 
+    similarity:
+    	minhash:            	0.458
+     	real Jaccad:        	0.453
+     	weighted Jaccard:   	0.727
+    time: 
+    	rgbHashing time:                        	    9302 ms
+     	minHashing time:                        	    1722 ms
+    	realJaccard time:                       	    6961 ms
+     	minHashing similarity time:             	      11 ms
+     	weighted Jaccard similarity time:       	    1988 ms
+
+
+I/MyTag: ai12.jpg and ai10.jpg: 
+    similarity:
+    	minhash:            	0.500
+     	real Jaccad:        	0.424
+     	weighted Jaccard:   	0.650
+    time: 
+    	rgbHashing time:                        	    4444 ms
+     	minHashing time:                        	    1785 ms
+    	realJaccard time:                       	    4175 ms
+     	minHashing similarity time:             	      11 ms
+     	weighted Jaccard similarity time:       	     218 ms
+
+
+I/MyTag: ai13.jpg and ai10.jpg: 
+    similarity:
+    	minhash:            	0.417
+     	real Jaccad:        	0.366
+     	weighted Jaccard:   	0.581
+    time: 
+    	rgbHashing time:                        	    4113 ms
+     	minHashing time:                        	     676 ms
+    	realJaccard time:                       	    3406 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     941 ms
+
+
+I/MyTag: ai14.jpg and ai10.jpg: 
+    similarity:
+    	minhash:            	0.292
+     	real Jaccad:        	0.341
+     	weighted Jaccard:   	0.510
+    time: 
+    	rgbHashing time:                        	    8370 ms
+     	minHashing time:                        	     677 ms
+    	realJaccard time:                       	   19858 ms
+     	minHashing similarity time:             	      10 ms
+     	weighted Jaccard similarity time:       	    1865 ms
+
+
+I/MyTag: ai15.jpg and ai10.jpg: 
+    similarity:
+    	minhash:            	0.500
+     	real Jaccad:        	0.361
+     	weighted Jaccard:   	0.564
+    time: 
+    	rgbHashing time:                        	    8267 ms
+     	minHashing time:                        	     494 ms
+    	realJaccard time:                       	    8148 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     254 ms
+
+
+I/MyTag: ai16.jpg and ai10.jpg: 
+    similarity:
+    	minhash:            	0.583
+     	real Jaccad:        	0.397
+     	weighted Jaccard:   	0.587
+    time: 
+    	rgbHashing time:                        	    9161 ms
+     	minHashing time:                        	     447 ms
+    	realJaccard time:                       	   17702 ms
+     	minHashing similarity time:             	      33 ms
+     	weighted Jaccard similarity time:       	     675 ms
+
+
+I/MyTag: ai17.jpg and ai10.jpg: 
+    similarity:
+    	minhash:            	0.458
+     	real Jaccad:        	0.413
+     	weighted Jaccard:   	0.652
+    time: 
+    	rgbHashing time:                        	    9224 ms
+     	minHashing time:                        	     442 ms
+    	realJaccard time:                       	    2378 ms
+     	minHashing similarity time:             	      11 ms
+     	weighted Jaccard similarity time:       	    1215 ms
+
+
+I/MyTag: ai18.jpg and ai10.jpg: 
+    similarity:
+    	minhash:            	0.542
+     	real Jaccad:        	0.442
+     	weighted Jaccard:   	0.715
+    time: 
+    	rgbHashing time:                        	    9181 ms
+     	minHashing time:                        	     474 ms
+    	realJaccard time:                       	    1900 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     300 ms
+
+
+I/MyTag: ai20.jpg and ai20.jpg: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	   23843 ms
+     	minHashing time:                        	    1018 ms
+    	realJaccard time:                       	   12270 ms
+     	minHashing similarity time:             	      15 ms
+     	weighted Jaccard similarity time:       	    1691 ms
+
+
+I/MyTag: ai21.jpg and ai20.jpg: 
+    similarity:
+    	minhash:            	0.583
+     	real Jaccad:        	0.465
+     	weighted Jaccard:   	0.843
+    time: 
+    	rgbHashing time:                        	   24130 ms
+     	minHashing time:                        	    1302 ms
+    	realJaccard time:                       	    4806 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     349 ms
+
+
+I/MyTag: ai22.jpg and ai20.jpg: 
+    similarity:
+    	minhash:            	0.458
+     	real Jaccad:        	0.463
+     	weighted Jaccard:   	0.830
+    time: 
+    	rgbHashing time:                        	   25820 ms
+     	minHashing time:                        	     799 ms
+    	realJaccard time:                       	    6407 ms
+     	minHashing similarity time:             	      14 ms
+     	weighted Jaccard similarity time:       	     381 ms
+
+
+I/MyTag: ai23.jpg and ai20.jpg: 
+    similarity:
+    	minhash:            	0.500
+     	real Jaccad:        	0.449
+     	weighted Jaccard:   	0.801
+    time: 
+    	rgbHashing time:                        	   23326 ms
+     	minHashing time:                        	     676 ms
+    	realJaccard time:                       	    5238 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     280 ms
+I/MyTag: ai24.jpg and ai20.jpg: 
+    similarity:
+    	minhash:            	0.417
+     	real Jaccad:        	0.459
+     	weighted Jaccard:   	0.788
+    time: 
+    	rgbHashing time:                        	   27400 ms
+     	minHashing time:                        	     646 ms
+    	realJaccard time:                       	   10633 ms
+     	minHashing similarity time:             	      14 ms
+     	weighted Jaccard similarity time:       	     608 ms
+
+
+I/MyTag: ai25.jpg and ai20.jpg: 
+    similarity:
+    	minhash:            	0.500
+     	real Jaccad:        	0.455
+     	weighted Jaccard:   	0.839
+    time: 
+    	rgbHashing time:                        	   25534 ms
+     	minHashing time:                        	     721 ms
+    	realJaccard time:                       	    3611 ms
+     	minHashing similarity time:             	      12 ms
+     	weighted Jaccard similarity time:       	     281 ms
+
+
+I/MyTag: ai26.jpg and ai20.jpg: 
+    similarity:
+    	minhash:            	0.500
+     	real Jaccad:        	0.433
+     	weighted Jaccard:   	0.793
+    time: 
+    	rgbHashing time:                        	   26127 ms
+     	minHashing time:                        	     770 ms
+    	realJaccard time:                       	    3763 ms
+     	minHashing similarity time:             	      12 ms
+     	weighted Jaccard similarity time:       	     350 ms
+
+
+I/MyTag: ai27.jpg and ai20.jpg: 
+    similarity:
+    	minhash:            	0.417
+     	real Jaccad:        	0.422
+     	weighted Jaccard:   	0.745
+    time: 
+    	rgbHashing time:                        	   24058 ms
+     	minHashing time:                        	    1263 ms
+    	realJaccard time:                       	    2738 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	    2388 ms
+
+
+I/MyTag: ai28.jpg and ai20.jpg: 
+    similarity:
+    	minhash:            	0.375
+     	real Jaccad:        	0.408
+     	weighted Jaccard:   	0.708
+    time: 
+    	rgbHashing time:                        	   29564 ms
+     	minHashing time:                        	     606 ms
+    	realJaccard time:                       	    4019 ms
+     	minHashing similarity time:             	      15 ms
+     	weighted Jaccard similarity time:       	     435 ms
+
+
+I/MyTag: ai30.jpg and ai30.jpg: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	   22933 ms
+     	minHashing time:                        	     362 ms
+    	realJaccard time:                       	   10122 ms
+     	minHashing similarity time:             	      10 ms
+     	weighted Jaccard similarity time:       	    3103 ms
+
+
+I/MyTag: ai31.jpg and ai30.jpg: 
+    similarity:
+    	minhash:            	0.583
+     	real Jaccad:        	0.647
+     	weighted Jaccard:   	0.807
+    time: 
+    	rgbHashing time:                        	   29133 ms
+     	minHashing time:                        	     311 ms
+    	realJaccard time:                       	    3148 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     188 ms
+
+
+I/MyTag: ai32.jpg and ai30.jpg: 
+    similarity:
+    	minhash:            	0.625
+     	real Jaccad:        	0.619
+     	weighted Jaccard:   	0.782
+    time: 
+    	rgbHashing time:                        	   56176 ms
+     	minHashing time:                        	     340 ms
+    	realJaccard time:                       	    6031 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     170 ms
+
+
+I/MyTag: ai33.jpg and ai30.jpg: 
+    similarity:
+    	minhash:            	0.708
+     	real Jaccad:        	0.640
+     	weighted Jaccard:   	0.750
+    time: 
+    	rgbHashing time:                        	   31445 ms
+     	minHashing time:                        	     344 ms
+    	realJaccard time:                       	    4069 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     752 ms
+
+
+I/MyTag: ai34.jpg and ai30.jpg: 
+    similarity:
+    	minhash:            	0.792
+     	real Jaccad:        	0.631
+     	weighted Jaccard:   	0.736
+    time: 
+    	rgbHashing time:                        	   25255 ms
+     	minHashing time:                        	     814 ms
+    	realJaccard time:                       	    2113 ms
+     	minHashing similarity time:             	      24 ms
+     	weighted Jaccard similarity time:       	     290 ms
+
+
+I/MyTag: ai35.jpg and ai30.jpg: 
+    similarity:
+    	minhash:            	0.500
+     	real Jaccad:        	0.603
+     	weighted Jaccard:   	0.664
+    time: 
+    	rgbHashing time:                        	   31040 ms
+     	minHashing time:                        	     728 ms
+    	realJaccard time:                       	    4679 ms
+     	minHashing similarity time:             	      28 ms
+     	weighted Jaccard similarity time:       	     326 ms
+
+
+I/MyTag: ai36.jpg and ai30.jpg: 
+    similarity:
+    	minhash:            	0.583
+     	real Jaccad:        	0.628
+     	weighted Jaccard:   	0.672
+    time: 
+    	rgbHashing time:                        	   21161 ms
+     	minHashing time:                        	     427 ms
+    	realJaccard time:                       	    8326 ms
+     	minHashing similarity time:             	      87 ms
+     	weighted Jaccard similarity time:       	     773 ms
+
+
+I/MyTag: ai37.jpg and ai30.jpg: 
+    similarity:
+    	minhash:            	0.500
+     	real Jaccad:        	0.625
+     	weighted Jaccard:   	0.693
+    time: 
+    	rgbHashing time:                        	   32253 ms
+     	minHashing time:                        	     393 ms
+    	realJaccard time:                       	    8202 ms
+     	minHashing similarity time:             	      21 ms
+     	weighted Jaccard similarity time:       	     287 ms
+
+
+I/MyTag: ai38.jpg and ai30.jpg: 
+    similarity:
+    	minhash:            	0.583
+     	real Jaccad:        	0.622
+     	weighted Jaccard:   	0.713
+    time: 
+    	rgbHashing time:                        	   26362 ms
+     	minHashing time:                        	     357 ms
+    	realJaccard time:                       	    3848 ms
+     	minHashing similarity time:             	      19 ms
+     	weighted Jaccard similarity time:       	     286 ms
+
+
+I/MyTag: ai40.jpg and ai40.jpg: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	   54443 ms
+     	minHashing time:                        	     366 ms
+    	realJaccard time:                       	    3953 ms
+     	minHashing similarity time:             	      20 ms
+     	weighted Jaccard similarity time:       	     283 ms
+
+
+I/MyTag: ai41.jpg and ai40.jpg: 
+    similarity:
+    	minhash:            	0.333
+     	real Jaccad:        	0.604
+     	weighted Jaccard:   	0.726
+    time: 
+    	rgbHashing time:                        	   28577 ms
+     	minHashing time:                        	     642 ms
+    	realJaccard time:                       	    5264 ms
+     	minHashing similarity time:             	      18 ms
+     	weighted Jaccard similarity time:       	     163 ms
+
+
+I/MyTag: ai42.jpg and ai40.jpg: 
+    similarity:
+    	minhash:            	0.542
+     	real Jaccad:        	0.624
+     	weighted Jaccard:   	0.636
+    time: 
+    	rgbHashing time:                        	   24930 ms
+     	minHashing time:                        	     303 ms
+    	realJaccard time:                       	    6571 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     242 ms
+
+
+I/MyTag: ai43.jpg and ai40.jpg: 
+    similarity:
+    	minhash:            	0.500
+     	real Jaccad:        	0.599
+     	weighted Jaccard:   	0.572
+    time: 
+    	rgbHashing time:                        	   27926 ms
+     	minHashing time:                        	     479 ms
+    	realJaccard time:                       	   21212 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     147 ms
+
+
+I/MyTag: ai44.jpg and ai40.jpg: 
+    similarity:
+    	minhash:            	0.583
+     	real Jaccad:        	0.615
+     	weighted Jaccard:   	0.610
+    time: 
+    	rgbHashing time:                        	   25137 ms
+     	minHashing time:                        	     309 ms
+    	realJaccard time:                       	    3708 ms
+     	minHashing similarity time:             	      14 ms
+     	weighted Jaccard similarity time:       	     142 ms
+
+
+I/MyTag: ai45.jpg and ai40.jpg: 
+    similarity:
+    	minhash:            	0.542
+     	real Jaccad:        	0.612
+     	weighted Jaccard:   	0.676
+    time: 
+    	rgbHashing time:                        	   18852 ms
+     	minHashing time:                        	     370 ms
+    	realJaccard time:                       	   14728 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     187 ms
+
+
+I/MyTag: ai47.jpg and ai40.jpg: 
+    similarity:
+    	minhash:            	0.583
+     	real Jaccad:        	0.624
+     	weighted Jaccard:   	0.763
+    time: 
+    	rgbHashing time:                        	   30812 ms
+     	minHashing time:                        	     637 ms
+    	realJaccard time:                       	    3544 ms
+     	minHashing similarity time:             	      12 ms
+     	weighted Jaccard similarity time:       	     230 ms
+
+
+I/MyTag: ai48.jpg and ai40.jpg: 
+    similarity:
+    	minhash:            	0.667
+     	real Jaccad:        	0.665
+     	weighted Jaccard:   	0.807
+    time: 
+    	rgbHashing time:                        	   25640 ms
+     	minHashing time:                        	     284 ms
+    	realJaccard time:                       	    4416 ms
+     	minHashing similarity time:             	      14 ms
+     	weighted Jaccard similarity time:       	     371 ms
+
+
+I/MyTag: ai50.jpg and ai50.jpg: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	   50960 ms
+     	minHashing time:                        	     474 ms
+    	realJaccard time:                       	    9514 ms
+     	minHashing similarity time:             	      76 ms
+     	weighted Jaccard similarity time:       	     189 ms
+
+
+I/MyTag: ai51.jpg and ai50.jpg: 
+    similarity:
+    	minhash:            	0.542
+     	real Jaccad:        	0.653
+     	weighted Jaccard:   	0.692
+    time: 
+    	rgbHashing time:                        	   62395 ms
+     	minHashing time:                        	     643 ms
+    	realJaccard time:                       	    7724 ms
+     	minHashing similarity time:             	      67 ms
+     	weighted Jaccard similarity time:       	     255 ms
+
+
+I/MyTag: ai52.jpg and ai50.jpg: 
+    similarity:
+    	minhash:            	0.583
+     	real Jaccad:        	0.503
+     	weighted Jaccard:   	0.365
+    time: 
+    	rgbHashing time:                        	   61869 ms
+     	minHashing time:                        	     425 ms
+    	realJaccard time:                       	   20530 ms
+     	minHashing similarity time:             	       7 ms
+     	weighted Jaccard similarity time:       	     360 ms
+
+
+I/MyTag: ai53.jpg and ai50.jpg: 
+    similarity:
+    	minhash:            	0.458
+     	real Jaccad:        	0.423
+     	weighted Jaccard:   	0.256
+    time: 
+    	rgbHashing time:                        	   40539 ms
+     	minHashing time:                        	     489 ms
+    	realJaccard time:                       	   12429 ms
+     	minHashing similarity time:             	      16 ms
+     	weighted Jaccard similarity time:       	     261 ms
+
+
+I/MyTag: ai54.jpg and ai50.jpg: 
+    similarity:
+    	minhash:            	0.333
+     	real Jaccad:        	0.373
+     	weighted Jaccard:   	0.271
+    time: 
+    	rgbHashing time:                        	   43558 ms
+     	minHashing time:                        	     892 ms
+    	realJaccard time:                       	   13710 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     438 ms
+
+
+I/MyTag: ai55.jpg and ai50.jpg: 
+    similarity:
+    	minhash:            	0.375
+     	real Jaccad:        	0.380
+     	weighted Jaccard:   	0.166
+    time: 
+    	rgbHashing time:                        	   37012 ms
+     	minHashing time:                        	     754 ms
+    	realJaccard time:                       	   15230 ms
+     	minHashing similarity time:             	      35 ms
+     	weighted Jaccard similarity time:       	     495 ms
+
+
+I/MyTag: ai56.jpg and ai50.jpg: 
+    similarity:
+    	minhash:            	0.250
+     	real Jaccad:        	0.347
+     	weighted Jaccard:   	0.140
+    time: 
+    	rgbHashing time:                        	   56722 ms
+     	minHashing time:                        	     837 ms
+    	realJaccard time:                       	   10398 ms
+     	minHashing similarity time:             	      15 ms
+     	weighted Jaccard similarity time:       	     347 ms
+
+
+I/MyTag: ai57.jpg and ai50.jpg: 
+    similarity:
+    	minhash:            	0.292
+     	real Jaccad:        	0.427
+     	weighted Jaccard:   	0.210
+    time: 
+    	rgbHashing time:                        	   43190 ms
+     	minHashing time:                        	     855 ms
+    	realJaccard time:                       	   12321 ms
+     	minHashing similarity time:             	      16 ms
+     	weighted Jaccard similarity time:       	     339 ms
+
+I/MyTag: ai58.jpg and ai50.jpg: 
+    similarity:
+    	minhash:            	0.583
+     	real Jaccad:        	0.541
+     	weighted Jaccard:   	0.568
+    time: 
+    	rgbHashing time:                        	   74079 m
+     	minHashing time:                        	     402 ms
+    	realJaccard time:                       	   16831 ms
+     	minHashing similarity time:             	      12 ms
+     	weighted Jaccard similarity time:       	     149 ms
+
+
+
+
+
+
+*****************************************************************************************************************
+*****************************************************************************************************************
+coil100 library (front view image: ac10, ac20)
+*****************************************************************************************************************
+*****************************************************************************************************************
+
+I/MyTag: ac10.png and ac10.png: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	     398 ms
+     	minHashing time:                        	     171 ms
+    	realJaccard time:                       	    2700 ms
+     	minHashing similarity time:             	      11 ms
+     	weighted Jaccard similarity time:       	   12945 ms
+
+
+I/MyTag: ac11.png and ac10.png: 
+    similarity:
+    	minhash:            	0.458
+     	real Jaccad:        	0.426
+     	weighted Jaccard:   	0.611
+    time: 
+    	rgbHashing time:                        	     425 ms
+     	minHashing time:                        	     171 ms
+    	realJaccard time:                       	     582 ms
+     	minHashing similarity time:             	      24 ms
+     	weighted Jaccard similarity time:       	    1296 ms
+
+
+I/MyTag: ac12.png and ac10.png: 
+    similarity:
+    	minhash:            	0.375
+     	real Jaccad:        	0.361
+     	weighted Jaccard:   	0.601
+    time: 
+    	rgbHashing time:                        	     378 ms
+     	minHashing time:                        	     141 ms
+    	realJaccard time:                       	    1980 ms
+     	minHashing similarity time:             	      14 ms
+     	weighted Jaccard similarity time:       	     871 ms
+
+
+I/MyTag: ac13.png and ac10.png: 
+    similarity:
+    	minhash:            	0.333
+     	real Jaccad:        	0.364
+     	weighted Jaccard:   	0.601
+    time: 
+    	rgbHashing time:                        	     863 ms
+     	minHashing time:                        	     142 ms
+    	realJaccard time:                       	     565 ms
+     	minHashing similarity time:             	     160 ms
+     	weighted Jaccard similarity time:       	     473 ms
+
+
+I/MyTag: ac14.png and ac10.png: 
+    similarity:
+    	minhash:            	0.250
+     	real Jaccad:        	0.349
+     	weighted Jaccard:   	0.563
+    time: 
+    	rgbHashing time:                        	     384 ms
+     	minHashing time:                        	     132 ms
+    	realJaccard time:                       	     289 ms
+     	minHashing similarity time:             	      16 ms
+     	weighted Jaccard similarity time:       	     379 ms
+
+
+I/MyTag: ac15.png and ac10.png: 
+    similarity:
+    	minhash:            	0.417
+     	real Jaccad:        	0.373
+     	weighted Jaccard:   	0.597
+    time: 
+    	rgbHashing time:                        	     378 ms
+     	minHashing time:                        	     134 ms
+    	realJaccard time:                       	     682 ms
+     	minHashing similarity time:             	      20 ms
+     	weighted Jaccard similarity time:       	     777 ms
+
+
+I/MyTag: ac16.png and ac10.png: 
+    similarity:
+    	minhash:            	0.333
+     	real Jaccad:        	0.357
+     	weighted Jaccard:   	0.558
+    time: 
+    	rgbHashing time:                        	     535 ms
+     	minHashing time:                        	     224 ms
+    	realJaccard time:                       	    1069 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	      80 ms
+
+
+I/MyTag: ac17.png and ac10.png: 
+    similarity:
+    	minhash:            	0.125
+     	real Jaccad:        	0.299
+     	weighted Jaccard:   	0.555
+    time: 
+    	rgbHashing time:                        	     397 ms
+     	minHashing time:                        	     174 ms
+    	realJaccard time:                       	     346 ms
+     	minHashing similarity time:             	      11 ms
+     	weighted Jaccard similarity time:       	      67 ms
+
+
+I/MyTag: ac18.png and ac10.png: 
+    similarity:
+    	minhash:            	0.375
+     	real Jaccad:        	0.362
+     	weighted Jaccard:   	0.551
+    time: 
+    	rgbHashing time:                        	     435 ms
+     	minHashing time:                        	     145 ms
+    	realJaccard time:                       	     291 ms
+     	minHashing similarity time:             	      16 ms
+     	weighted Jaccard similarity time:       	     189 ms
+
+
+I/MyTag: ac20.png and ac20.png: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	     470 ms
+     	minHashing time:                        	     138 ms
+    	realJaccard time:                       	     177 ms
+     	minHashing similarity time:             	      10 ms
+     	weighted Jaccard similarity time:       	     205 ms
+
+
+I/MyTag: ac21.png and ac20.png: 
+    similarity:
+    	minhash:            	0.333
+     	real Jaccad:        	0.330
+     	weighted Jaccard:   	0.543
+    time: 
+    	rgbHashing time:                        	     483 ms
+     	minHashing time:                        	     124 ms
+    	realJaccard time:                       	    2056 ms
+     	minHashing similarity time:             	      98 ms
+     	weighted Jaccard similarity time:       	     140 ms
+
+
+I/MyTag: ac22.png and ac20.png: 
+    similarity:
+    	minhash:            	0.375
+     	real Jaccad:        	0.329
+     	weighted Jaccard:   	0.490
+    time: 
+    	rgbHashing time:                        	     432 ms
+     	minHashing time:                        	     123 ms
+    	realJaccard time:                       	    1909 ms
+     	minHashing similarity time:             	      12 ms
+     	weighted Jaccard similarity time:       	     794 ms
+
+
+I/MyTag: ac23.png and ac20.png: 
+    similarity:
+    	minhash:            	0.458
+     	real Jaccad:        	0.315
+     	weighted Jaccard:   	0.469
+    time: 
+    	rgbHashing time:                        	     401 ms
+     	minHashing time:                        	     161 ms
+    	realJaccard time:                       	     275 ms
+     	minHashing similarity time:             	      11 ms
+     	weighted Jaccard similarity time:       	     104 ms
+
+
+I/MyTag: ac24.png and ac20.png: 
+    similarity:
+    	minhash:            	0.417
+     	real Jaccad:        	0.314
+     	weighted Jaccard:   	0.478
+    time: 
+    	rgbHashing time:                        	     598 ms
+     	minHashing time:                        	     226 ms
+    	realJaccard time:                       	     492 ms
+     	minHashing similarity time:             	      16 ms
+     	weighted Jaccard similarity time:       	     574 ms
+
+
+I/MyTag: ac25.png and ac20.png: 
+    similarity:
+    	minhash:            	0.375
+     	real Jaccad:        	0.289
+     	weighted Jaccard:   	0.467
+    time: 
+    	rgbHashing time:                        	     570 ms
+     	minHashing time:                        	     298 ms
+    	realJaccard time:                       	    1832 ms
+     	minHashing similarity time:             	      10 ms
+     	weighted Jaccard similarity time:       	     129 ms
+
+
+I/MyTag: ac26.png and ac20.png: 
+    similarity:
+    	minhash:            	0.292
+     	real Jaccad:        	0.320
+     	weighted Jaccard:   	0.418
+    time: 
+    	rgbHashing time:                        	     867 ms
+     	minHashing time:                        	     298 ms
+    	realJaccard time:                       	    1448 ms
+     	minHashing similarity time:             	      92 ms
+     	weighted Jaccard similarity time:       	      87 ms
+
+
+I/MyTag: ac27.png and ac20.png: 
+    similarity:
+    	minhash:            	0.292
+     	real Jaccad:        	0.303
+     	weighted Jaccard:   	0.443
+    time: 
+    	rgbHashing time:                        	    4885 ms
+     	minHashing time:                        	     439 ms
+    	realJaccard time:                       	     990 ms
+     	minHashing similarity time:             	      26 ms
+     	weighted Jaccard similarity time:       	     120 ms
+
+
+I/MyTag: ac28.png and ac20.png: 
+    similarity:
+    	minhash:            	0.208
+     	real Jaccad:        	0.307
+     	weighted Jaccard:   	0.452
+    time: 
+    	rgbHashing time:                        	     424 ms
+     	minHashing time:                        	     182 ms
+    	realJaccard time:                       	     964 ms
+     	minHashing similarity time:             	      28 ms
+     	weighted Jaccard similarity time:       	      82 ms
+
+
+
+*****************************************************************************************************************
+*****************************************************************************************************************
+videoDataset library (google images: a1, a2, a3, a4, a5, a6, a7, a8)
+*****************************************************************************************************************
+*****************************************************************************************************************
+
+I/MyTag: a1.bmp and a1.bmp: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	   12264 ms
+     	minHashing time:                        	    1572 ms
+    	realJaccard time:                       	   18383 ms
+     	minHashing similarity time:             	      11 ms
+     	weighted Jaccard similarity time:       	   29004 ms
+
+
+I/MyTag: a11.bmp and a1.bmp: 
+    similarity:
+    	minhash:            	0.042
+     	real Jaccad:        	0.054
+     	weighted Jaccard:   	0.266
+    time: 
+    	rgbHashing time:                        	    1481 ms
+     	minHashing time:                        	     401 ms
+    	realJaccard time:                       	   13395 ms
+     	minHashing similarity time:             	      17 ms
+     	weighted Jaccard similarity time:       	     836 ms
+
+
+I/MyTag: a12.bmp and a1.bmp: 
+    similarity:
+    	minhash:            	0.042
+     	real Jaccad:        	0.060
+     	weighted Jaccard:   	0.245
+    time: 
+    	rgbHashing time:                        	    2927 ms
+     	minHashing time:                        	     580 ms
+    	realJaccard time:                       	    5462 ms
+     	minHashing similarity time:             	      12 ms
+     	weighted Jaccard similarity time:       	     601 ms
+
+
+I/MyTag: a13.bmp and a1.bmp: 
+    similarity:
+    	minhash:            	0.042
+     	real Jaccad:        	0.076
+     	weighted Jaccard:   	0.199
+    time: 
+    	rgbHashing time:                        	    4450 ms
+     	minHashing time:                        	     540 ms
+    	realJaccard time:                       	    5728 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	    1047 ms
+
+
+I/MyTag: a14.bmp and a1.bmp: 
+    similarity:
+    	minhash:            	0.042
+     	real Jaccad:        	0.103
+     	weighted Jaccard:   	0.166
+    time: 
+    	rgbHashing time:                        	    5527 ms
+     	minHashing time:                        	     689 ms
+    	realJaccard time:                       	   32438 ms
+     	minHashing similarity time:             	      16 ms
+     	weighted Jaccard similarity time:       	    1708 ms
+
+
+I/MyTag: a15.bmp and a1.bmp: 
+    similarity:
+    	minhash:            	0.042
+     	real Jaccad:        	0.148
+     	weighted Jaccard:   	0.157
+    time: 
+    	rgbHashing time:                        	   21240 ms
+     	minHashing time:                        	    1655 ms
+    	realJaccard time:                       	   14686 ms
+     	minHashing similarity time:             	      19 ms
+     	weighted Jaccard similarity time:       	     875 ms
+
+
+I/MyTag: a2.bmp and a2.bmp: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	    3265 ms
+     	minHashing time:                        	     673 ms
+    	realJaccard time:                       	    3502 ms
+     	minHashing similarity time:             	      82 ms
+     	weighted Jaccard similarity time:       	     340 ms
+
+
+I/MyTag: a21.bmp and a2.bmp: 
+    similarity:
+    	minhash:            	0.208
+     	real Jaccad:        	0.168
+     	weighted Jaccard:   	0.417
+    time: 
+    	rgbHashing time:                        	    2949 ms
+     	minHashing time:                        	     251 ms
+    	realJaccard time:                       	    2411 ms
+     	minHashing similarity time:             	      23 ms
+     	weighted Jaccard similarity time:       	     226 ms
+
+
+I/MyTag: a22.bmp and a2.bmp: 
+    similarity:
+    	minhash:            	0.208
+     	real Jaccad:        	0.189
+     	weighted Jaccard:   	0.300
+    time: 
+    	rgbHashing time:                        	    4429 ms
+     	minHashing time:                        	     259 ms
+    	realJaccard time:                       	    2141 ms
+     	minHashing similarity time:             	      18 ms
+     	weighted Jaccard similarity time:       	     143 ms
+
+
+I/MyTag: a23.bmp and a2.bmp: 
+    similarity:
+    	minhash:            	0.125
+     	real Jaccad:        	0.168
+     	weighted Jaccard:   	0.276
+    time: 
+    	rgbHashing time:                        	    6736 ms
+     	minHashing time:                        	     279 ms
+    	realJaccard time:                       	    6087 ms
+     	minHashing similarity time:             	      19 ms
+     	weighted Jaccard similarity time:       	     184 ms
+
+
+I/MyTag: a24.bmp and a2.bmp: 
+    similarity:
+    	minhash:            	0.250
+     	real Jaccad:        	0.178
+     	weighted Jaccard:   	0.235
+    time: 
+    	rgbHashing time:                        	    6514 ms
+     	minHashing time:                        	     327 ms
+    	realJaccard time:                       	    3389 ms
+     	minHashing similarity time:             	      66 ms
+     	weighted Jaccard similarity time:       	     512 ms
+
+
+I/MyTag: a25.bmp and a2.bmp: 
+    similarity:
+    	minhash:            	0.208
+     	real Jaccad:        	0.182
+     	weighted Jaccard:   	0.242
+    time: 
+    	rgbHashing time:                        	    8103 ms
+     	minHashing time:                        	     343 ms
+    	realJaccard time:                       	    6282 ms
+     	minHashing similarity time:             	      34 ms
+     	weighted Jaccard similarity time:       	     319 ms
+
+
+I/MyTag: a3.bmp and a3.bmp: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	    2517 ms
+     	minHashing time:                        	     335 ms
+    	realJaccard time:                       	    3195 ms
+     	minHashing similarity time:             	      29 ms
+     	weighted Jaccard similarity time:       	     280 ms
+
+
+I/MyTag: a31.bmp and a3.bmp: 
+    similarity:
+    	minhash:            	0.042
+     	real Jaccad:        	0.080
+     	weighted Jaccard:   	0.306
+    time: 
+    	rgbHashing time:                        	    2198 ms
+     	minHashing time:                        	     310 ms
+    	realJaccard time:                       	    3506 ms
+     	minHashing similarity time:             	      24 ms
+     	weighted Jaccard similarity time:       	     213 ms
+
+
+I/MyTag: a32.bmp and a3.bmp: 
+    similarity:
+    	minhash:            	0.125
+     	real Jaccad:        	0.092
+     	weighted Jaccard:   	0.238
+    time: 
+    	rgbHashing time:                        	    5437 ms
+     	minHashing time:                        	     937 ms
+    	realJaccard time:                       	    2591 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     140 ms
+
+
+I/MyTag: a33.bmp and a3.bmp: 
+    similarity:
+    	minhash:            	0.000
+     	real Jaccad:        	0.144
+     	weighted Jaccard:   	0.109
+    time: 
+    	rgbHashing time:                        	    9100 ms
+     	minHashing time:                        	     883 ms
+    	realJaccard time:                       	    2561 ms
+     	minHashing similarity time:             	      12 ms
+     	weighted Jaccard similarity time:       	     159 ms
+
+
+I/MyTag: a34.bmp and a3.bmp: 
+    similarity:
+    	minhash:            	0.083
+     	real Jaccad:        	0.130
+     	weighted Jaccard:   	0.091
+    time: 
+    	rgbHashing time:                        	   15029 ms
+     	minHashing time:                        	    2355 ms
+    	realJaccard time:                       	    2764 ms
+     	minHashing similarity time:             	      19 ms
+     	weighted Jaccard similarity time:       	     223 ms
+
+
+I/MyTag: a35.bmp and a3.bmp: 
+    similarity:
+    	minhash:            	0.083
+     	real Jaccad:        	0.118
+     	weighted Jaccard:   	0.101
+    time: 
+    	rgbHashing time:                        	   22696 ms
+     	minHashing time:                        	    1151 ms
+    	realJaccard time:                       	    4833 ms
+     	minHashing similarity time:             	      15 ms
+     	weighted Jaccard similarity time:       	     207 ms
+
+
+I/MyTag: a4.bmp and a4.bmp: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	   26068 ms
+     	minHashing time:                        	    1167 ms
+    	realJaccard time:                       	    5631 ms
+     	minHashing similarity time:             	      15 ms
+     	weighted Jaccard similarity time:       	    1166 ms
+
+
+I/MyTag: a41.bmp and a4.bmp: 
+    similarity:
+    	minhash:            	0.167
+     	real Jaccad:        	0.135
+     	weighted Jaccard:   	0.107
+    time: 
+    	rgbHashing time:                        	    1859 ms
+     	minHashing time:                        	     493 ms
+    	realJaccard time:                       	    7214 ms
+     	minHashing similarity time:             	      24 ms
+     	weighted Jaccard similarity time:       	     552 ms
+
+
+I/MyTag: a42.bmp and a4.bmp: 
+    similarity:
+    	minhash:            	0.083
+     	real Jaccad:        	0.146
+     	weighted Jaccard:   	0.121
+    time: 
+    	rgbHashing time:                        	    2403 ms
+     	minHashing time:                        	     564 ms
+    	realJaccard time:                       	    5431 ms
+     	minHashing similarity time:             	      20 ms
+     	weighted Jaccard similarity time:       	     818 ms
+
+
+I/MyTag: a43.bmp and a4.bmp: 
+    similarity:
+    	minhash:            	0.083
+     	real Jaccad:        	0.142
+     	weighted Jaccard:   	0.128
+    time: 
+    	rgbHashing time:                        	    3767 ms
+     	minHashing time:                        	    1035 ms
+    	realJaccard time:                       	    3437 ms
+     	minHashing similarity time:             	      14 ms
+     	weighted Jaccard similarity time:       	     716 ms
+
+
+I/MyTag: a44.bmp and a4.bmp: 
+    similarity:
+    	minhash:            	0.083
+     	real Jaccad:        	0.135
+     	weighted Jaccard:   	0.144
+    time: 
+    	rgbHashing time:                        	    7840 ms
+     	minHashing time:                        	     738 ms
+    	realJaccard time:                       	    4048 ms
+     	minHashing similarity time:             	      15 ms
+     	weighted Jaccard similarity time:       	     581 ms
+
+
+I/MyTag: a45.bmp and a4.bmp: 
+    similarity:
+    	minhash:            	0.208
+     	real Jaccad:        	0.127
+     	weighted Jaccard:   	0.122
+    time: 
+    	rgbHashing time:                        	    7974 ms
+     	minHashing time:                        	     831 ms
+    	realJaccard time:                       	    7182 ms
+     	minHashing similarity time:             	      22 ms
+     	weighted Jaccard similarity time:       	    1127 ms
+
+
+I/MyTag: a5.bmp and a5.bmp: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	    2304 ms
+     	minHashing time:                        	     532 ms
+    	realJaccard time:                       	     900 ms
+     	minHashing similarity time:             	      20 ms
+     	weighted Jaccard similarity time:       	     311 ms
+
+
+I/MyTag: a51.bmp and a5.bmp: 
+    similarity:
+    	minhash:            	0.000
+     	real Jaccad:        	0.015
+     	weighted Jaccard:   	0.377
+    time: 
+    	rgbHashing time:                        	    2643 ms
+     	minHashing time:                        	     114 ms
+    	realJaccard time:                       	    2544 ms
+     	minHashing similarity time:             	      21 ms
+     	weighted Jaccard similarity time:       	     285 ms
+
+
+I/MyTag: a52.bmp and a5.bmp: 
+    similarity:
+    	minhash:            	0.000
+     	real Jaccad:        	0.094
+     	weighted Jaccard:   	0.127
+    time: 
+    	rgbHashing time:                        	   14670 ms
+     	minHashing time:                        	     239 ms
+    	realJaccard time:                       	    2864 ms
+     	minHashing similarity time:             	      52 ms
+     	weighted Jaccard similarity time:       	     186 ms
+
+
+I/MyTag: a53.bmp and a5.bmp: 
+    similarity:
+    	minhash:            	0.000
+     	real Jaccad:        	0.074
+     	weighted Jaccard:   	0.150
+    time: 
+    	rgbHashing time:                        	    6780 ms
+     	minHashing time:                        	     452 ms
+    	realJaccard time:                       	    2141 ms
+     	minHashing similarity time:             	      78 ms
+     	weighted Jaccard similarity time:       	     162 ms
+
+
+I/MyTag: a54.bmp and a5.bmp: 
+    similarity:
+    	minhash:            	0.000
+     	real Jaccad:        	0.078
+     	weighted Jaccard:   	0.103
+    time: 
+    	rgbHashing time:                        	    5915 ms
+     	minHashing time:                        	     241 ms
+    	realJaccard time:                       	    9752 ms
+     	minHashing similarity time:             	      37 ms
+     	weighted Jaccard similarity time:       	     254 ms
+
+
+I/MyTag: a55.bmp and a5.bmp: 
+    similarity:
+    	minhash:            	0.000
+     	real Jaccad:        	0.075
+     	weighted Jaccard:   	0.167
+    time: 
+    	rgbHashing time:                        	    7017 ms
+     	minHashing time:                        	     254 ms
+    	realJaccard time:                       	   11407 ms
+     	minHashing similarity time:             	      21 ms
+     	weighted Jaccard similarity time:       	     158 ms
+
+
+I/MyTag: a6.bmp and a6.bmp: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	   10677 ms
+     	minHashing time:                        	     839 ms
+    	realJaccard time:                       	   12878 ms
+     	minHashing similarity time:             	      18 ms
+     	weighted Jaccard similarity time:       	     627 ms
+
+
+I/MyTag: a61.bmp and a6.bmp: 
+    similarity:
+    	minhash:            	0.125
+     	real Jaccad:        	0.124
+     	weighted Jaccard:   	0.095
+    time: 
+    	rgbHashing time:                        	    4499 ms
+     	minHashing time:                        	     356 ms
+    	realJaccard time:                       	    4789 ms
+     	minHashing similarity time:             	      19 ms
+     	weighted Jaccard similarity time:       	     159 ms
+
+
+I/MyTag: a62.bmp and a6.bmp: 
+    similarity:
+    	minhash:            	0.167
+     	real Jaccad:        	0.131
+     	weighted Jaccard:   	0.090
+    time: 
+    	rgbHashing time:                        	    5648 ms
+     	minHashing time:                        	     326 ms
+    	realJaccard time:                       	    5120 ms
+     	minHashing similarity time:             	      24 ms
+     	weighted Jaccard similarity time:       	    1992 ms
+
+
+I/MyTag: a63.bmp and a6.bmp: 
+    similarity:
+    	minhash:            	0.250
+     	real Jaccad:        	0.134
+     	weighted Jaccard:   	0.096
+    time: 
+    	rgbHashing time:                        	    6198 ms
+     	minHashing time:                        	     426 ms
+    	realJaccard time:                       	    1977 ms
+     	minHashing similarity time:             	      17 ms
+     	weighted Jaccard similarity time:       	     169 ms
+
+
+I/MyTag: a64.bmp and a6.bmp: 
+    similarity:
+    	minhash:            	0.083
+     	real Jaccad:        	0.128
+     	weighted Jaccard:   	0.068
+    time: 
+    	rgbHashing time:                        	    7671 ms
+     	minHashing time:                        	     505 ms
+    	realJaccard time:                       	    4057 ms
+     	minHashing similarity time:             	      14 ms
+     	weighted Jaccard similarity time:       	     152 ms
+
+
+I/MyTag: a65.bmp and a6.bmp: 
+    similarity:
+    	minhash:            	0.167
+     	real Jaccad:        	0.132
+     	weighted Jaccard:   	0.078
+    time: 
+    	rgbHashing time:                        	    6676 ms
+     	minHashing time:                        	     439 ms
+    	realJaccard time:                       	    2125 ms
+     	minHashing similarity time:             	      14 ms
+     	weighted Jaccard similarity time:       	     166 ms
+
+
+I/MyTag: a7.bmp and a7.bmp: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	   23646 ms
+     	minHashing time:                        	    1142 ms
+    	realJaccard time:                       	    8774 ms
+     	minHashing similarity time:             	      24 ms
+     	weighted Jaccard similarity time:       	     868 ms
+
+
+I/MyTag: a71.bmp and a7.bmp: 
+    similarity:
+    	minhash:            	0.250
+     	real Jaccad:        	0.256
+     	weighted Jaccard:   	0.192
+    time: 
+    	rgbHashing time:                        	   19943 ms
+     	minHashing time:                        	    1209 ms
+    	realJaccard time:                       	    3294 ms
+     	minHashing similarity time:             	      26 ms
+     	weighted Jaccard similarity time:       	     343 ms
+
+
+I/MyTag: a72.bmp and a7.bmp: 
+    similarity:
+    	minhash:            	0.375
+     	real Jaccad:        	0.275
+     	weighted Jaccard:   	0.194
+    time: 
+    	rgbHashing time:                        	   16029 ms
+     	minHashing time:                        	     544 ms
+    	realJaccard time:                       	    4346 ms
+     	minHashing similarity time:             	      30 ms
+     	weighted Jaccard similarity time:       	     221 ms
+
+
+I/MyTag: a73.bmp and a7.bmp: 
+    similarity:
+    	minhash:            	0.333
+     	real Jaccad:        	0.271
+     	weighted Jaccard:   	0.178
+    time: 
+    	rgbHashing time:                        	    6555 ms
+     	minHashing time:                        	     732 ms
+    	realJaccard time:                       	    3506 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	     304 ms
+
+
+I/MyTag: a74.bmp and a7.bmp: 
+    similarity:
+    	minhash:            	0.333
+     	real Jaccad:        	0.257
+     	weighted Jaccard:   	0.199
+    time: 
+    	rgbHashing time:                        	    5740 ms
+     	minHashing time:                        	     374 ms
+    	realJaccard time:                       	    7854 ms
+     	minHashing similarity time:             	      24 ms
+     	weighted Jaccard similarity time:       	     455 ms
+
+
+I/MyTag: a75.bmp and a7.bmp: 
+    similarity:
+    	minhash:            	0.333
+     	real Jaccad:        	0.276
+     	weighted Jaccard:   	0.257
+    time: 
+    	rgbHashing time:                        	   12286 ms
+     	minHashing time:                        	     741 ms
+    	realJaccard time:                       	    3188 ms
+     	minHashing similarity time:             	      23 ms
+     	weighted Jaccard similarity time:       	     445 ms
+
+
+I/MyTag: a8.bmp and a8.bmp: 
+    similarity:
+    	minhash:            	1.000
+     	real Jaccad:        	1.000
+     	weighted Jaccard:   	1.000
+    time: 
+    	rgbHashing time:                        	   33712 ms
+     	minHashing time:                        	    1873 ms
+    	realJaccard time:                       	    6786 ms
+     	minHashing similarity time:             	      18 ms
+     	weighted Jaccard similarity time:       	     611 ms
+
+
+I/MyTag: a81.bmp and a8.bmp: 
+    similarity:
+    	minhash:            	0.083
+     	real Jaccad:        	0.076
+     	weighted Jaccard:   	0.034
+    time: 
+    	rgbHashing time:                        	    4999 ms
+     	minHashing time:                        	     498 ms
+    	realJaccard time:                       	    8024 ms
+     	minHashing similarity time:             	      25 ms
+     	weighted Jaccard similarity time:       	     360 ms
+
+
+I/MyTag: a82.bmp and a8.bmp: 
+    similarity:
+    	minhash:            	0.208
+     	real Jaccad:        	0.087
+     	weighted Jaccard:   	0.043
+    time: 
+    	rgbHashing time:                        	    4576 ms
+     	minHashing time:                        	     629 ms
+    	realJaccard time:                       	    6379 ms
+     	minHashing similarity time:             	      13 ms
+     	weighted Jaccard similarity time:       	    1685 ms
+
+
+I/MyTag: a83.bmp and a8.bmp: 
+    similarity:
+    	minhash:            	0.083
+     	real Jaccad:        	0.124
+     	weighted Jaccard:   	0.085
+    time: 
+    	rgbHashing time:                        	    5801 ms
+     	minHashing time:                        	    1309 ms
+    	realJaccard time:                       	    3903 ms
+     	minHashing similarity time:             	      14 ms
+     	weighted Jaccard similarity time:       	     297 ms
+
+
+I/MyTag: a84.bmp and a8.bmp: 
+    similarity:
+    	minhash:            	0.125
+     	real Jaccad:        	0.085
+     	weighted Jaccard:   	0.084
+    time: 
+    	rgbHashing time:                        	    7939 ms
+     	minHashing time:                        	     618 ms
+    	realJaccard time:                       	    8252 ms
+     	minHashing similarity time:             	      20 ms
+     	weighted Jaccard similarity time:       	     532 ms
+
+
+I/MyTag: a85.bmp and a8.bmp: 
+    similarity:
+    	minhash:            	0.125
+     	real Jaccad:        	0.094
+     	weighted Jaccard:   	0.070
+    time: 
+    	rgbHashing time:                        	    7247 ms
+     	minHashing time:                        	    1055 ms
+    	realJaccard time:                       	    4122 ms
+     	minHashing similarity time:             	      15 ms
+     	weighted Jaccard similarity time:       	     284 ms
