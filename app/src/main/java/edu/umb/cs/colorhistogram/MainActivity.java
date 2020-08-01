@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private MyAdapter adapt;
     private HashMap<String, Bitmap> images = new HashMap<>();
     private TreeMap<String, ArrayList<String>> imageGroup = new TreeMap<>();
+    private Map<String, String[]> imLibs;
+
 
     private HashMap<String, Integer> name2idx = new HashMap<>();
     private ArrayList<String> inames = new ArrayList<>(5);
@@ -186,7 +188,10 @@ public class MainActivity extends AppCompatActivity {
 //     Print Weighted Jaccard similarity between each image to a00000.jpg
         //System.out.println("hello from print");
 
-        for (String baseImage : imageGroup.keySet()) {
+
+
+        String[] baseImages = imLibs.get("isis");
+        for (String baseImage : baseImages) {
             int baseIdx = name2idx.get(baseImage);
             for (String im  : imageGroup.get(baseImage)) {
 
@@ -252,12 +257,12 @@ public class MainActivity extends AppCompatActivity {
     private void loadImageFromAssets() {
 
 //      Images Folders and their original files
-        Map<String, String[]> imLibs = new HashMap<String, String[]>() {
+        imLibs = new HashMap<String, String[]>() {
             {
                 put("coil100", new String[]{"ac10.png", "ac20.png"});
                 put("isis", new String[]{"ai10.jpg", "ai20.jpg", "ai30.jpg", "ai40.jpg", "ai50.jpg"});
-                put("videoDataset", new String[]{"a01.bmp", "a11.bmp", "a21.bmp", "a31.bmp", "a41.bmp", "a51.bmp"
-                        , "a61.bmp", "a71.bmp", "a81.bmp"});
+                put("videoDataset", new String[]{"a1.bmp", "a2.bmp", "a3.bmp", "a4.bmp", "a5.bmp", "a6.bmp"
+                        , "a7.bmp", "a8.bmp"});
             }
         };
 
@@ -279,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
                     for (String file : list) {
 
                         if (path.equals("videoDataset")) {
-                            imageGroup.get(file.substring(0, 2) + "1.bmp").add(file);
+                            imageGroup.get(file.substring(0, 2) + ".bmp").add(file);
 
                         } else if (path.equals("isis")) {
                             imageGroup.get(file.substring(0, 3) + "0.jpg").add(file);
