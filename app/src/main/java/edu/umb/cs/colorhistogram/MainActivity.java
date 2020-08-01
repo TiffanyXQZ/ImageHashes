@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private MyAdapter adapt;
     private HashMap<String, Bitmap> images = new HashMap<>();
     private TreeMap<String, ArrayList<String>> imageGroup = new TreeMap<>();
+
+    //imLibs are baseImage names for each folder
     private Map<String, String[]> imLibs;
 
 
