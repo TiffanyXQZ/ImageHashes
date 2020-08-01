@@ -285,8 +285,14 @@ public class MainActivity extends AppCompatActivity {
                     // This is a folder
                     for (String file : list) {
 
+                        boolean flag = false;
+
                         if (path.equals("videoDataset")) {
                             imageGroup.get(file.substring(0, 2) + ".bmp").add(file);
+
+                            // if it is not base image in videoDateSet no need to crop
+                            flag = !imageGroup.containsKey(file);
+
 
                         } else if (path.equals("isis")) {
                             imageGroup.get(file.substring(0, 3) + "0.jpg").add(file);
@@ -304,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
                         images.put(file, bitmap);
                         bitmaps.add(bitmap);
                         ImageData imageData = new ImageData(bitmap);
-                        Bitmap img = imageData.getCroppedBitmap(); //crop every picture for the library
+                        Bitmap img = flag ? bitmap : imageData.getCroppedBitmap(); //crop every picture for the library
                         crop_bitmaps.add(img);
 
 
