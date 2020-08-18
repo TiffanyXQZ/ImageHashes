@@ -9,9 +9,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import edu.umb.cs.lsh.MyMinHash;
 import lombok.Getter;
@@ -42,6 +44,7 @@ public class ImageData_MinHash {
     private static int[] range = {2,10};
     private Pixel[][] pixel_objs;
     private List<PixelProperty> pList=new ArrayList<PixelProperty>();
+    private Hashtable temp_ht=new Hashtable();
 
     private class Pixel{
         //List<PixelProperty> pList=new ArrayList<PixelProperty>();
@@ -146,6 +149,34 @@ public class ImageData_MinHash {
         }
         abstract int getVal(int x, int y);
     }
+
+
+    int getMostPopularColor(int x, int y){
+        int ret=-1;
+        temp_ht=new Hashtable();
+        int gw=10;// check x-gw,x+gw,y-gw,y+gw
+        for(int i=(int)Math.max(0,x-gw);i<=(int)Math.min(width-1,x+gw);i++){
+            for(int j=(int)Math.max(0,y-gw);j<=(int)Math.min(height-1,y+gw);j++){
+                int pcol=pixel_objs[i][j].getColor();
+                Integer val=(Integer)temp_ht.get(new Integer(pcol));
+                if(val==null) val=new Integer(1);
+                else val++;
+                temp_ht.put(new Integer(pcol),val);
+            }
+        }
+        Set<Map.Entry<Integer, Integer>> entrySet = temp_ht.entrySet();
+
+        int max_freq=0;
+        for (Map.Entry<Integer, Integer> entry : entrySet)
+        {
+            if(entry.getValue() > max_freq)
+            {
+                ret = entry.getKey();
+                max_freq = entry.getValue();
+            }
+        }
+        return ret;
+    }
     private class neighborRProperty extends NeighborProperty{
         neighborRProperty(String name, int min, int max, int num){
             super(name,min,max,num);
@@ -156,7 +187,7 @@ public class ImageData_MinHash {
         //    Pixel p=(Pixel)arg[0];
         //    int x=p.getX(), y=p.getY();
         int getVal(int x, int y){
-            int sum=0, count=0;
+            /*int sum=0, count=0;
             if(x>0){
                 sum+=Color.red(pixel_objs[x-1][y].getColor());
                 count++;
@@ -174,6 +205,9 @@ public class ImageData_MinHash {
                 count++;
             }
             int val=(int)Math.round((float)sum/count);
+             */
+            int col=getMostPopularColor(x,y);
+            int val=Color.red(col);
             int w=(int)Math.ceil((float)256/num);
             return (val-min)/w;
         }
@@ -254,8 +288,8 @@ public class ImageData_MinHash {
         pList.add(new bProperty("green",0,255, num));
         pList.add(new rProperty("red",0,255,num));
         pList.add(new neighborRProperty("neighbor_r",0,255,num));
-        pList.add(new neighborGProperty("neighbor_g",0,255,num));
-        pList.add(new neighborBProperty("neighbor_b",0,255,num));
+        //pList.add(new neighborGProperty("neighbor_g",0,255,num));
+        //pList.add(new neighborBProperty("neighbor_b",0,255,num));
 
         //pList.add(new rProperty("neight_red",0,255,num)); //test another property
     }
