@@ -23,9 +23,11 @@ import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 import edu.umb.cs.lsh.MyMinHash;
@@ -216,11 +218,11 @@ public class MainActivity extends AppCompatActivity {
                                 "\t%-40s\t%8d ms\n \t%-40s\t%8d ms\n \t%-40s\t%8d ms\n",
                         imageData.getName(), baseImage,
                         "minhash:",
-                        minhash.similarity(imData_List.get(baseIdx).getMin_hash(), imageData.getMin_hash()),
+                        minHashSimi,//minhash.similarity(imData_List.get(baseIdx).getMin_hash(), imageData.getMin_hash()),
                         "real Jaccad:",
-                        minhash.jaccard(imData_List.get(baseIdx).getPixel_hash(), imageData.getPixel_hash()),
+                        realJaccard,//minhash.jaccard(imData_List.get(baseIdx).getPixel_hash(), imageData.getPixel_hash()),
                         "weighted Jaccard:",
-                        WeightedJaccard.similarity(imData_List.get(baseIdx).getColor_hist(), imageData.getColor_hist()),
+                        weiSim,//WeightedJaccard.similarity(imData_List.get(baseIdx).getColor_hist(), imageData.getColor_hist()),
                         "rgbHashing time:", imageData.getTime_rgbhashing() / 1000,
                         "minHashing time:", imageData.getTime_minhashing() / 1000,
                         "realJaccard time:", realJacTime / 1000,
@@ -246,16 +248,43 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-    }
 
+        /*** print out a8 colors and signature **/
+        String baseImage = "a8.bmp";
+        int baseIdx = name2idx.get(baseImage);
+        for (String im  : imageGroup.get(baseImage)) {
+            String outputstr=im;
+            ImageData_MinHash imageData = imData_List.get(name2idx.get(im));
+            int[] sig=imageData.getMin_hash();
+            Set<Integer> colset=imageData.getColor_hist().keySet();
+            int[] col=new int[colset.size()];
+            int idx=0;
+            for(int num : colset){
+                col[idx++]=num;
+            }
+            outputstr+="\n";
+            Arrays.sort(col);
+            outputstr+=col.length+"\t"+Arrays.toString(col)+"\n\n";
+            outputstr+="\t"+ Arrays.toString(sig);
+
+            int maxLogSize = 1000;
+            for(int i = 0; i <= outputstr.length() / maxLogSize; i++) {
+                int start = i * maxLogSize;
+                int end = (i+1) * maxLogSize;
+                end = end > outputstr.length() ? outputstr.length() : end;
+                Log.v("MyTag", outputstr.substring(start, end));
+            }
+
+        }
+    }
 
     private void loadImageFromAssets() {
 
 //      Images Folders and their original files
         imLibs = new HashMap<String, String[]>() {
             {
-                put("coil100", new String[]{"ac10.png", "ac20.png"});
-                put("isis", new String[]{"ai10.jpg", "ai20.jpg", "ai30.jpg", "ai40.jpg", "ai50.jpg"});
+                //put("coil100", new String[]{"ac10.png", "ac20.png"});
+                //put("isis", new String[]{"ai10.jpg", "ai20.jpg", "ai30.jpg", "ai40.jpg", "ai50.jpg"});
                 put("videoDataset", new String[]{"a1.bmp", "a2.bmp", "a3.bmp", "a4.bmp", "a5.bmp", "a6.bmp"
                         , "a7.bmp", "a8.bmp"});
             }

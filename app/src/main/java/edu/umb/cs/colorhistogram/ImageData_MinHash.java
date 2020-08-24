@@ -3,6 +3,7 @@ package edu.umb.cs.colorhistogram;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
+import android.util.Log;
 
 
 import java.lang.reflect.Array;
@@ -78,6 +79,7 @@ public class ImageData_MinHash {
                 base*=p.getRange();
             }
             // if((x<10)&&(y<10)) System.out.printf("%d,%d: %d\t%d\n", x,y,ret, calHash1(num));
+
             return ret;
         }
     }
@@ -220,6 +222,7 @@ public class ImageData_MinHash {
             //this.name=name;this.min=min;this.max=max; this.num=num;
         }
         public int getVal(int x, int y){
+            /*
             int sum=0, count=0;
             if(x>0){
                 sum+=Color.green(pixel_objs[x-1][y].getColor());
@@ -239,6 +242,11 @@ public class ImageData_MinHash {
             }
             int val=(int)Math.round((float)sum/count);
             int w=(int)Math.ceil((float)256/num);
+            return (val-min)/w;*/
+
+            int col=getMostPopularColor(x,y);
+            int val=Color.green(col);
+            int w=(int)Math.ceil((float)256/num);
             return (val-min)/w;
         }
     }
@@ -249,6 +257,7 @@ public class ImageData_MinHash {
             //this.name=name;this.min=min;this.max=max; this.num=num;
         }
         public int getVal(int x, int y){
+            /*
             int sum=0, count=0;
             if(x>0){
                 sum+=Color.blue(pixel_objs[x-1][y].getColor());
@@ -267,6 +276,11 @@ public class ImageData_MinHash {
                 count++;
             }
             int val=(int)Math.round((float)sum/count);
+            int w=(int)Math.ceil((float)256/num);
+            return (val-min)/w;*/
+
+            int col=getMostPopularColor(x,y);
+            int val=Color.blue(col);
             int w=(int)Math.ceil((float)256/num);
             return (val-min)/w;
         }
@@ -288,8 +302,8 @@ public class ImageData_MinHash {
         pList.add(new bProperty("green",0,255, num));
         pList.add(new rProperty("red",0,255,num));
         pList.add(new neighborRProperty("neighbor_r",0,255,num));
-        //pList.add(new neighborGProperty("neighbor_g",0,255,num));
-        //pList.add(new neighborBProperty("neighbor_b",0,255,num));
+        pList.add(new neighborGProperty("neighbor_g",0,255,num));
+        pList.add(new neighborBProperty("neighbor_b",0,255,num));
 
         //pList.add(new rProperty("neight_red",0,255,num)); //test another property
     }
@@ -416,7 +430,13 @@ public class ImageData_MinHash {
         long duration, startTime,endTime;
 
         startTime = System.nanoTime();
+        Log.i("MyTag",name);
+
         int[] min_hash = minHash.signature(this.color_hist.keySet());//this minHash is the minhash value of this image
+
+        Log.i("MyTag",String.format("number of colors: %d\t signature size: %d",
+                this.color_hist.keySet().size(),min_hash.length));
+
         endTime = System.nanoTime();
         duration = endTime - startTime;
         this.time_minhashing = duration;
