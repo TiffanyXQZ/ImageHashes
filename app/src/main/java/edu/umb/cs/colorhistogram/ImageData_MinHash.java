@@ -389,6 +389,15 @@ public class ImageData_MinHash {
         this.color_hist = color_hist;
         this.num_color = color_hist.size();
 
+        if (name.equals("ac10.png")) {
+
+            System.out.println(String.format("Picture: %s\n",name));
+            for (int i: color_hist.keySet()){
+                System.out.print(String.format("%3d : %4d\t",i,color_hist.get(i)));
+            }
+
+        }
+
         LinkedHashMap<Integer, Integer> sortedMap = new LinkedHashMap<>();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -431,6 +440,9 @@ public class ImageData_MinHash {
 
         startTime = System.nanoTime();
         Log.i("MyTag",name);
+
+
+
 
         int[] min_hash = minHash.signature(this.color_hist.keySet());//this minHash is the minhash value of this image
 

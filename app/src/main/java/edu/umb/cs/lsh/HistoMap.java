@@ -26,4 +26,16 @@ public class HistoMap {
         }
         return map;
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder str = new StringBuilder(String.format("Picture: %s\n"));
+        for (int i: map.keySet()){
+            str.append(String.format("%3d : %4d\n"));
+        }
+
+
+        return str.toString();
+    }
 }

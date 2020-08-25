@@ -283,10 +283,10 @@ public class MainActivity extends AppCompatActivity {
 //      Images Folders and their original files
         imLibs = new HashMap<String, String[]>() {
             {
-                //put("coil100", new String[]{"ac10.png", "ac20.png"});
+                put("coil100", new String[]{"ac10.png", "ac20.png"});
                 //put("isis", new String[]{"ai10.jpg", "ai20.jpg", "ai30.jpg", "ai40.jpg", "ai50.jpg"});
-                put("videoDataset", new String[]{"a1.bmp", "a2.bmp", "a3.bmp", "a4.bmp", "a5.bmp", "a6.bmp"
-                        , "a7.bmp", "a8.bmp"});
+//                put("videoDataset", new String[]{"a1.bmp", "a2.bmp", "a3.bmp", "a4.bmp", "a5.bmp", "a6.bmp"
+//                        , "a7.bmp", "a8.bmp"});
             }
         };
 
