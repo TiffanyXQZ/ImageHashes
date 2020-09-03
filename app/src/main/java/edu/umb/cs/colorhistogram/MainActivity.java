@@ -43,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
     private Map<String, String[]> imLibs;
 
 
+
+
+
+
+
     private HashMap<String, Integer> name2idx = new HashMap<>();
     private ArrayList<String> inames = new ArrayList<>(5);
     // index for each image in listview
@@ -69,42 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         loadImageFromAssets();
 
-/*
 
-        String originfiles[] = {"ai10.jpg", "ai20.png", "ai30.jpg", "ai40.jpg", "ai50.jpg"};
-
-        String originfile;// = originfiles[4];
-        //origin_file.put(originfile, -1);
-        int j = 0;
-
-
-        for (int i = 0; i < originfiles.length; i++) {
-
-            originfile = originfiles[i];
-            origin_file.put(originfile, -1);
-
-            for (String name : images.keySet()) {
-
-                Bitmap bmp = images.get(name);
-                if (!name.startsWith(originfile.substring(0, 3))) continue;
-                boolean isOrigin = (origin_file.containsKey(name)); //check if it's the online (origin) image
-
-                ImageData imageData = new ImageData(bmp);
-                bitmaps.add(bmp);
-                crop_bitmaps.add(imageData.getCroppedBitmap());
-
-                //Bitmap img = isOrigin ? imageData.getCroppedBitmap() : bmp; //only crop online image
-
-                Bitmap img = imageData.getCroppedBitmap(); //crop every picture for the library
-
-                ImageData_MinHash imdata = new ImageData_MinHash(name, img, num, minhash, isOrigin);
-                imData_List.add(imdata);
-                if (isOrigin) origin_file.put(name, j);
-                j++;
-//            if (j >= 25) break;
-
-            }
-        }*/
 
         new Thread() {
             public void run() {
@@ -231,21 +201,6 @@ public class MainActivity extends AppCompatActivity {
 
                 //System.out.println(str);
                 Log.i("MyTag", str);
-
-/*                try {
-
-                    FileOutputStream fOut = openFileOutput(path, MODE_APPEND);
-//                    System.out.println(fOut.getFD().toString());
-                    OutputStreamWriter osw = new OutputStreamWriter(fOut);
-                    osw.write(log);
-                    osw.flush();
-                    osw.close();
-
-                } catch (IOException e) {
-
-                }*/
-
-
             }
         }
 
@@ -279,16 +234,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadImageFromAssets() {
-
-//      Images Folders and their original files
+        //      Images Folders and their original files
         imLibs = new HashMap<String, String[]>() {
             {
-                put("coil100", new String[]{"ac10.png", "ac20.png"});
+//                put("coil100", new String[]{"ac10.png", "ac20.png"});
                 //put("isis", new String[]{"ai10.jpg", "ai20.jpg", "ai30.jpg", "ai40.jpg", "ai50.jpg"});
-//                put("videoDataset", new String[]{"a1.bmp", "a2.bmp", "a3.bmp", "a4.bmp", "a5.bmp", "a6.bmp"
-//                        , "a7.bmp", "a8.bmp"});
+                put("videoDataset", new String[]{"a1.bmp", "a2.bmp", "a3.bmp", "a4.bmp", "a5.bmp", "a6.bmp"
+                        , "a7.bmp", "a8.bmp"});
             }
         };
+
 
         for (String path : imLibs.keySet()) {
             for (String origina : imLibs.get(path)) {
@@ -338,6 +293,19 @@ public class MainActivity extends AppCompatActivity {
 
                         boolean isOrigin = imageGroup.containsKey(file);
                         ImageData_MinHash imdata = new ImageData_MinHash(file, img, num, minhash, isOrigin);
+
+//                        if (file.equals("a1.bmp")) {
+//                            System.out.println("hello");
+//                            System.out.println(String.format("Picture: %s\n",file));
+//                            System.out.println(imdata.getColor_hist().keySet().size());
+//                            for (int i: imdata.getColor_hist().keySet()){
+//                                System.out.println("hello");
+//                                System.out.print(String.format("%3d : %4d\t",i,imdata.getColor_hist().get(i)));
+//                            }
+//
+//                        }
+
+
                         imData_List.add(imdata);
                         name2idx.put(file, j);
                         j++;

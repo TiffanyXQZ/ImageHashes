@@ -6,8 +6,12 @@ import android.os.Build;
 import android.util.Log;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -15,10 +19,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import edu.umb.cs.lsh.MyMinHash;
 import lombok.Getter;
 import lombok.Setter;
+
 
 
 @Getter
@@ -29,7 +35,7 @@ public class ImageData_MinHash {
     private int num;//num: number of buckets for RGB to integers.
     private int num_color;
     private int num_pixel,width,height;
-    private Map<Integer,Integer> color_hist;
+    private Map<Integer,Integer> color_hist = new HashMap<>();
     private Map<Integer,Integer> sorted_color_hist;
     private int[] pixel_hash;
     private int[] min_hash;
@@ -47,7 +53,13 @@ public class ImageData_MinHash {
     private List<PixelProperty> pList=new ArrayList<PixelProperty>();
     private Hashtable temp_ht=new Hashtable();
 
+
+    final Logger logger = LoggerFactory.getLogger(getClass());
+
+
+
     private class Pixel{
+
         //List<PixelProperty> pList=new ArrayList<PixelProperty>();
         int x,y,col;
         Pixel(int x, int y, int col){
@@ -380,23 +392,53 @@ public class ImageData_MinHash {
 
         //pixel_hash histogtram
 
-        Map<Integer, Integer> color_hist = new HashMap<>();
-        for (int i : pixels_Hash){
-            Integer j = color_hist.get(i);
-            color_hist.put(i,(j==null) ? 1 : j+1);
-        }
+        class colorRatioCmp implements Comparator<double[]>{
 
-        this.color_hist = color_hist;
-        this.num_color = color_hist.size();
-
-        if (name.equals("ac10.png")) {
-
-            System.out.println(String.format("Picture: %s\n",name));
-            for (int i: color_hist.keySet()){
-                System.out.print(String.format("%3d : %4d\t",i,color_hist.get(i)));
+            @Override
+            public int compare(double[] t1, double[] t2) {
+                return Double.compare(t1[1], t2[1]);
             }
-
         }
+
+
+
+        for (int i : pixels_Hash){
+            if ( !color_hist.containsKey(i)) color_hist.put(i, 1);
+            Integer j = color_hist.get(i);
+            color_hist.put(i,j+1);
+        }
+
+        double[][] colorRatio = new double[color_hist.size()][2];
+        int index = 0;
+        for (int color : color_hist.keySet()){
+            colorRatio[index][0] = (double) color;
+            colorRatio[index][1] = (double) color_hist.get(color) / num_pixel;
+            index++;
+        }
+
+        Arrays.sort(colorRatio, new colorRatioCmp());
+
+
+        System.out.println("====");
+        logger.info("-------num of color {}",color_hist.size());
+//        remove color number ratio smaller than 5
+        double ratio = 0.1;
+        for (int i = 0; i < color_hist.size(); i++) {
+
+            if (ratio < colorRatio[i][1]) break;
+//            logger.info("Color {} : {} is removed", (int) colorRatio[i][0], colorRatio[i][1]);
+            color_hist.remove((int) colorRatio[i][0]);
+            ratio -= colorRatio[i][1];
+        }
+        this.num_color = color_hist.size();
+        logger.info("-------num of color {} after removal",num_color);
+
+
+
+
+
+
+
 
         LinkedHashMap<Integer, Integer> sortedMap = new LinkedHashMap<>();
 
