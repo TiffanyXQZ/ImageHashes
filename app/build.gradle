@@ -29,7 +29,10 @@ repositories {
 }
 
 dependencies {
+
     implementation project(path: ':sdk')
+    implementation 'apache-logging:commons-logging:1.1.0.jboss'
+    implementation 'org.jboss.forge.addon:slf4j:1.7.13'
     compileOnly 'org.projectlombok:lombok:1.18.10'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
     implementation("com.google.guava:guava:28.2-android")

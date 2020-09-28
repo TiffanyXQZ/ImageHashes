@@ -43,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
     private Map<String, String[]> imLibs;
 
 
+
+
+
+
+
     private HashMap<String, Integer> name2idx = new HashMap<>();
     private ArrayList<String> inames = new ArrayList<>(5);
     // index for each image in listview
@@ -69,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
 
         loadImageFromAssets();
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 6f75992a00861c08b255729ff9d95d9b240efacf
         new Thread() {
             public void run() {
                 print();
@@ -192,9 +202,12 @@ public class MainActivity extends AppCompatActivity {
                         "weighted Jaccard similarity time:", wHTime / 1000);
 
                 Log.i("MyTag", str);
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 6f75992a00861c08b255729ff9d95d9b240efacf
             }
         }
 
@@ -228,16 +241,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadImageFromAssets() {
-
-//      Images Folders and their original files
+        //      Images Folders and their original files
         imLibs = new HashMap<String, String[]>() {
             {
+<<<<<<< HEAD
                 //put("coil100", new String[]{"ac10.png", "ac20.png"});
                 //put("isis", new String[]{"ai10.jpg", "ai20.jpg", "ai30.jpg", "ai40.jpg", "ai50.jpg"});
                   put("videoDataset", new String[]{"a1.bmp", "a2.bmp", "a3.bmp", "a4.bmp", "a5.bmp", "a6.bmp"
+=======
+//                put("coil100", new String[]{"ac10.png", "ac20.png"});
+                //put("isis", new String[]{"ai10.jpg", "ai20.jpg", "ai30.jpg", "ai40.jpg", "ai50.jpg"});
+                put("videoDataset", new String[]{"a1.bmp", "a2.bmp", "a3.bmp", "a4.bmp", "a5.bmp", "a6.bmp"
+>>>>>>> 6f75992a00861c08b255729ff9d95d9b240efacf
                         , "a7.bmp", "a8.bmp"});
             }
         };
+
 
         for (String path : imLibs.keySet()) {
             for (String origina : imLibs.get(path)) {
@@ -287,6 +306,19 @@ public class MainActivity extends AppCompatActivity {
 
                         boolean isOrigin = imageGroup.containsKey(file);
                         ImageData_MinHash imdata = new ImageData_MinHash(file, img, num, minhash, isOrigin);
+
+//                        if (file.equals("a1.bmp")) {
+//                            System.out.println("hello");
+//                            System.out.println(String.format("Picture: %s\n",file));
+//                            System.out.println(imdata.getColor_hist().keySet().size());
+//                            for (int i: imdata.getColor_hist().keySet()){
+//                                System.out.println("hello");
+//                                System.out.print(String.format("%3d : %4d\t",i,imdata.getColor_hist().get(i)));
+//                            }
+//
+//                        }
+
+
                         imData_List.add(imdata);
                         name2idx.put(file, j);
                         j++;
